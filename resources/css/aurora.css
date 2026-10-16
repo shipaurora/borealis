@@ -1361,11 +1361,6 @@
     --tippy-background-color: #221d40;
 }
 
-/* Settings: the Languages and Sites tabs save through their own dialogs, so the page's Save button goes. */
-.fi-page:has(.fi-tabs-item.fi-active:is([data-tab-key='languages'], [data-tab-key='sites'])) .cms-settings-save {
-    display: none;
-}
-
 /* Page header buttons sit on the right on phones too, where the header stacks, and when they
    wrap onto a line of their own under a long title; the primary action stays at the end. */
 .fi-header .fi-header-actions-ctn {
@@ -2455,4 +2450,37 @@ html:has(.fpb) {
     width: 1rem;
     height: 1rem;
     color: var(--color-primary-500);
+}
+
+/* A page's side menu (Settings): stays in view under the top bar as the page scrolls, and
+   scrolls on its own when it's taller than the screen. */
+.fi-page-has-sub-navigation-start .fi-page-sub-navigation-sidebar-ctn {
+    position: sticky;
+    top: calc(var(--topbar-height, 4rem) + 1rem);
+    flex-shrink: 0;
+    max-height: calc(100dvh - var(--topbar-height, 4rem) - 2rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+}
+
+/* The site switcher's list: as wide as the switcher (the sidebar, less its padding), its
+   sites the size of the sidebar's items, each with its avatar as a tile like the switcher's. */
+.fi-tenant-menu .fi-dropdown-panel {
+    width: calc(var(--sidebar-width, 20rem) - 1.5rem) !important;
+    max-width: calc(100vw - 1.5rem);
+}
+
+.fi-tenant-menu .fi-dropdown-list-item {
+    gap: 0.75rem;
+    padding: 0.55rem 0.75rem;
+    border-radius: 0.875rem;
+    font-size: 0.9375rem;
+}
+
+.fi-tenant-menu .fi-dropdown-list-item-image {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 0.5rem;
+    object-fit: cover;
 }
