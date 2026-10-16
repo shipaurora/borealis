@@ -1,0 +1,2130 @@
+/*
+ * "Aurora": the admin panel's look. Filament's layout, restyled as a futuristic
+ * control surface: a dark command rail floating beside the content, a floating glass
+ * top bar, a faint tech grid under northern-lights glows, glass cards with glowing
+ * edges, Space Grotesk headings with mono captions, and neon pill actions.
+ *
+ * Filament keeps its component styles in the `components` layer; these rules are
+ * unlayered, so they win without !important. Everything here targets Filament's own
+ * fi-* classes, so the app's own views (canvas, media library, blocks) are untouched.
+ */
+
+:root {
+    --aurora-cyan: #22d3ee;
+    --aurora-pink: #e879f9;
+    --aurora-display: 'Space Grotesk', var(--font-family), ui-sans-serif, system-ui, sans-serif;
+    --aurora-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --aurora-bg: #f3f3f8;
+    --aurora-grid: rgb(76 29 149 / 0.055);
+    --aurora-card: rgb(255 255 255 / 0.82);
+    --aurora-card-solid: #ffffff;
+    --aurora-field: rgb(255 255 255 / 0.9);
+    --aurora-hairline: rgb(15 23 42 / 0.07);
+    --aurora-edge: linear-gradient(140deg,
+            color-mix(in oklch, var(--primary-500) 45%, transparent),
+            rgb(15 23 42 / 0.07) 32%,
+            rgb(15 23 42 / 0.05) 68%,
+            color-mix(in oklch, var(--aurora-cyan) 45%, transparent));
+    --aurora-shadow:
+        0 1px 1px rgb(15 23 42 / 0.03),
+        0 12px 32px -14px rgb(49 21 120 / 0.22);
+    --aurora-shadow-lifted:
+        0 2px 4px rgb(15 23 42 / 0.05),
+        0 30px 70px -24px rgb(49 21 120 / 0.38);
+
+    /* Dark ink for small accent pills (active tab, layout switch), in both modes. */
+    --aurora-ink: #0d0b1f;
+
+    /* The command rail (sidebar, editor palette): light glass here, dark in dark mode. */
+    /* The rail is glass like the top bar: same tint, blur, hairline and shadow. */
+    --aurora-glass: color-mix(in oklch, var(--aurora-card-solid) 58%, transparent);
+    --aurora-glass-shadow: var(--aurora-shadow), inset 0 0 0 1px var(--aurora-hairline), inset 0 1px 0 rgb(255 255 255 / 0.5);
+    --aurora-rail-bg: color-mix(in oklch, var(--aurora-card-solid) 82%, transparent);
+    --aurora-rail-shadow: var(--aurora-glass-shadow);
+    --aurora-rail-text: var(--gray-700);
+    --aurora-rail-strong: var(--gray-950);
+    --aurora-rail-muted: var(--gray-400);
+    --aurora-rail-hover: rgb(15 23 42 / 0.045);
+    --aurora-rail-line: rgb(15 23 42 / 0.08);
+    --aurora-rail-tile: rgb(255 255 255 / 0.7);
+    /* The current page: a solid violet pill with white text, in both modes. */
+    --aurora-rail-active-bg: linear-gradient(135deg, var(--primary-700), var(--primary-600) 45%, color-mix(in oklch, var(--primary-500) 88%, var(--aurora-cyan)));
+    --aurora-rail-active-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.22),
+        0 1px 2px color-mix(in oklch, var(--primary-700) 40%, transparent),
+        0 6px 14px -6px color-mix(in oklch, var(--primary-600) 75%, transparent);
+    --aurora-rail-active-text: #fff;
+    --aurora-rail-active-icon: #fff;
+}
+
+.dark {
+    --aurora-bg: #06060c;
+    --aurora-grid: rgb(255 255 255 / 0.035);
+    --aurora-card: rgb(20 18 38 / 0.82);
+    --aurora-card-solid: #12101f;
+    --aurora-field: rgb(255 255 255 / 0.04);
+    --aurora-hairline: rgb(255 255 255 / 0.08);
+    --aurora-edge: linear-gradient(140deg,
+            color-mix(in oklch, var(--primary-400) 50%, transparent),
+            rgb(255 255 255 / 0.07) 32%,
+            rgb(255 255 255 / 0.05) 68%,
+            color-mix(in oklch, var(--aurora-cyan) 40%, transparent));
+    --aurora-shadow:
+        0 1px 1px rgb(0 0 0 / 0.4),
+        0 16px 40px -16px rgb(0 0 0 / 0.8);
+    --aurora-shadow-lifted:
+        0 2px 4px rgb(0 0 0 / 0.5),
+        0 30px 80px -20px rgb(0 0 0 / 0.9);
+    --aurora-glass-shadow: var(--aurora-shadow), inset 0 0 0 1px var(--aurora-hairline), inset 0 1px 0 rgb(255 255 255 / 0.05);
+    --aurora-rail-text: rgb(226 232 240 / 0.78);
+    --aurora-rail-strong: #fff;
+    --aurora-rail-muted: rgb(148 163 184 / 0.7);
+    --aurora-rail-hover: rgb(255 255 255 / 0.06);
+    --aurora-rail-line: rgb(255 255 255 / 0.1);
+    --aurora-rail-tile: rgb(255 255 255 / 0.035);
+}
+
+/* ── Canvas: a tech grid under the aurora ─────────────────────────────── */
+
+.fi-body {
+    background-color: var(--aurora-bg);
+    background-image:
+        radial-gradient(56rem 26rem at 18% -6%, color-mix(in oklch, var(--primary-400) 26%, transparent), transparent 70%),
+        radial-gradient(44rem 22rem at 96% 2%, color-mix(in oklch, var(--aurora-cyan) 20%, transparent), transparent 70%),
+        radial-gradient(40rem 26rem at 55% 112%, color-mix(in oklch, var(--aurora-pink) 12%, transparent), transparent 70%),
+        linear-gradient(var(--aurora-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--aurora-grid) 1px, transparent 1px);
+    background-size: auto, auto, auto, 32px 32px, 32px 32px;
+    background-attachment: fixed;
+}
+
+.dark .fi-body {
+    background-image:
+        radial-gradient(56rem 26rem at 18% -6%, color-mix(in oklch, var(--primary-600) 34%, transparent), transparent 70%),
+        radial-gradient(44rem 22rem at 96% 2%, color-mix(in oklch, var(--aurora-cyan) 16%, transparent), transparent 70%),
+        radial-gradient(40rem 26rem at 55% 112%, color-mix(in oklch, var(--aurora-pink) 10%, transparent), transparent 70%),
+        linear-gradient(var(--aurora-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--aurora-grid) 1px, transparent 1px);
+}
+
+/* ── Top bar: a floating glass capsule ────────────────────────────────── */
+
+.fi-topbar-ctn {
+    padding: 0.75rem 0.75rem 0;
+}
+
+.fi-topbar {
+    position: relative;
+    isolation: isolate;
+    min-height: calc(var(--topbar-height) - 0.75rem);
+    border-radius: 1.25rem;
+    background: transparent;
+    box-shadow: var(--aurora-glass-shadow);
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+/*
+ * The glass sits on a layer behind the bar rather than on the bar itself. A backdrop-filter
+ * makes an element the containing block for fixed-position descendants, and Safari and the
+ * dropdown positioning disagree about that, so menus inside (the user menu) open in the wrong
+ * place. The same goes for every surface below that holds a dropdown: no backdrop-filter.
+ */
+.fi-topbar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--aurora-glass);
+    /* The bar's edge, as on the sidebar rail: on this layer, which would cover an inset shadow on the bar. */
+    box-shadow: inset 0 0 0 1px var(--aurora-hairline);
+    -webkit-backdrop-filter: saturate(1.8) blur(20px);
+    backdrop-filter: saturate(1.8) blur(20px);
+    pointer-events: none;
+}
+
+.fi-logo {
+    font-family: var(--aurora-display);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+/* Search fields are pills everywhere: the top bar and every list's own search. */
+.fi-global-search-field .fi-input-wrp,
+.fi-ta-search-field .fi-input-wrp {
+    border-radius: 9999px;
+}
+
+.fi-user-menu .fi-avatar,
+.fi-topbar .fi-avatar {
+    box-shadow: 0 0 0 2px var(--aurora-card-solid), 0 0 0 3.5px var(--primary-500), 0 0 14px color-mix(in oklch, var(--primary-500) 60%, transparent);
+}
+
+/* ── Sidebar: the command rail ───────────────────────────────────────── */
+
+/* The site switcher (multi-site): the first entry in the rail, above a divider. */
+.fi-sidebar-nav > .fi-tenant-menu {
+    margin: 0 0 0.25rem;
+    padding-bottom: 0.875rem;
+    border-bottom: 1px solid var(--aurora-rail-line);
+}
+
+.fi-tenant-menu-trigger {
+    padding: 0.375rem 0.5rem 0.375rem 0.375rem;
+    border-radius: 0.875rem;
+    transition: background-color 160ms;
+}
+
+.fi-tenant-menu-trigger:hover,
+.fi-tenant-menu-trigger:focus-visible {
+    background: var(--aurora-rail-hover);
+}
+
+.fi-tenant-menu-trigger .fi-tenant-avatar {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 6px 16px -6px color-mix(in oklch, var(--primary-600) 70%, transparent);
+}
+
+.fi-tenant-menu-trigger-current-tenant-label {
+    font-family: var(--aurora-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--aurora-rail-muted);
+}
+
+.fi-tenant-menu-trigger-tenant-name {
+    font-weight: 600;
+    color: var(--aurora-rail-strong);
+}
+
+/* Collapsed rail: just the site's tile, centred over the icons. */
+@media (min-width: 1024px) {
+    .fi-body-has-sidebar-collapsible-on-desktop .fi-sidebar:not(.fi-sidebar-open) .fi-sidebar-nav > .fi-tenant-menu {
+        width: 100%;
+        padding-bottom: 0.75rem;
+    }
+
+    .fi-body-has-sidebar-collapsible-on-desktop .fi-sidebar:not(.fi-sidebar-open) .fi-tenant-menu-trigger {
+        justify-content: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-inline: auto;
+        padding: 0;
+    }
+}
+
+.fi-sidebar-nav {
+    margin: 0.75rem;
+    padding: 1.25rem 0.75rem;
+    border-radius: 1.25rem;
+    background: var(--aurora-rail-bg);
+    box-shadow: var(--aurora-rail-shadow);
+    /* Filament keeps room for a scrollbar, which left the items off-centre; take it only when scrolling. */
+    scrollbar-gutter: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--aurora-rail-line) transparent;
+}
+
+.fi-sidebar-nav-groups {
+    margin-inline: 0;
+}
+
+.fi-sidebar-group-label {
+    font-family: var(--aurora-mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--aurora-rail-muted);
+}
+
+.fi-sidebar-group-btn .fi-icon,
+.fi-sidebar-group-collapse-btn,
+.fi-sidebar-group-dropdown-trigger-btn .fi-icon {
+    color: var(--aurora-rail-muted);
+}
+
+.fi-sidebar-group-dropdown-trigger-btn {
+    border-radius: 0.875rem;
+}
+
+.fi-sidebar-group-dropdown-trigger-btn:hover {
+    background: var(--aurora-rail-hover);
+}
+
+/* Breathing room between the items of a group. */
+.fi-sidebar-group-items {
+    gap: 0.5rem;
+}
+
+.fi-sidebar-item-btn {
+    border-radius: 0.875rem;
+    padding: 0.55rem 0.75rem;
+    transition: background-color 160ms, box-shadow 160ms;
+}
+
+.fi-sidebar-item-btn > .fi-icon {
+    color: var(--aurora-rail-muted);
+    transition: color 160ms, filter 160ms;
+}
+
+.fi-sidebar-item-label {
+    color: var(--aurora-rail-text);
+}
+
+.fi-sidebar-item-has-url:not(.fi-active) > .fi-sidebar-item-btn:hover {
+    background: var(--aurora-rail-hover);
+}
+
+.fi-sidebar-item-has-url:not(.fi-active) > .fi-sidebar-item-btn:hover > .fi-icon,
+.fi-sidebar-item-has-url:not(.fi-active) > .fi-sidebar-item-btn:hover > .fi-sidebar-item-label {
+    color: var(--aurora-rail-strong);
+}
+
+.fi-sidebar-item.fi-active > .fi-sidebar-item-btn,
+.fi-sidebar-group.fi-active > .fi-sidebar-group-dropdown-trigger-btn {
+    background: var(--aurora-rail-active-bg);
+    box-shadow: var(--aurora-rail-active-shadow);
+}
+
+.fi-sidebar-item.fi-active > .fi-sidebar-item-btn > .fi-sidebar-item-label {
+    color: var(--aurora-rail-active-text);
+    font-weight: 600;
+}
+
+.fi-sidebar-item.fi-active > .fi-sidebar-item-btn > .fi-icon,
+.fi-sidebar-group.fi-active > .fi-sidebar-group-dropdown-trigger-btn .fi-icon {
+    color: var(--aurora-rail-active-icon);
+}
+
+.fi-sidebar-item-grouped-border-part,
+.fi-sidebar-item-grouped-border-part-not-first,
+.fi-sidebar-item-grouped-border-part-not-last {
+    background: var(--aurora-rail-line);
+}
+
+/* Count badges (the sidebar's, tabs'): the same compact solid pill as the collapsed rail's
+   dots and the bell's, the digits centred rather than on Filament's baseline. */
+.fi-sidebar-item-badge-ctn .fi-badge,
+.fi-tabs-item .fi-badge {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.125rem;
+    height: 1.125rem;
+    min-height: 0;
+    padding: 0 0.35rem;
+    gap: 0;
+    border-radius: 9999px;
+    font-family: inherit;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    background: var(--primary-600);
+    color: #fff;
+    box-shadow: none;
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+.fi-sidebar-item-badge-ctn .fi-badge-label-ctn,
+.fi-tabs-item .fi-badge .fi-badge-label-ctn {
+    display: block;
+    align-self: center;
+}
+
+/* A tab's own colour (Live in green, Scheduled in blue) stays, filled the same way. */
+.fi-tabs-item .fi-badge.fi-color:not(.fi-color-gray) {
+    background: var(--color-600);
+}
+
+/* On the active item's purple, the same badge in reverse, so it doesn't sink into it. */
+.fi-sidebar-item.fi-active .fi-sidebar-item-badge-ctn .fi-badge {
+    background: #fff;
+    color: var(--primary-700);
+}
+
+/* Collapsed to icons: a slim rail with centred icons. */
+@media (min-width: 1024px) {
+    /* No scrollbar here (it still scrolls): it took 11px of a 68px rail and pushed the
+       icons off centre. */
+    .fi-body-has-sidebar-collapsible-on-desktop .fi-sidebar:not(.fi-sidebar-open) .fi-sidebar-nav {
+        margin: 0.75rem 0.625rem;
+        padding: 0.875rem 0.5rem;
+        gap: 1rem;
+        scrollbar-width: none;
+    }
+
+    .fi-body-has-sidebar-collapsible-on-desktop .fi-sidebar:not(.fi-sidebar-open) .fi-sidebar-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .fi-body-has-sidebar-collapsible-on-desktop .fi-sidebar:not(.fi-sidebar-open) .fi-sidebar-nav-groups,
+    .fi-body-has-sidebar-collapsible-on-desktop .fi-sidebar:not(.fi-sidebar-open) .fi-sidebar-group,
+    .fi-body-has-sidebar-collapsible-on-desktop .fi-sidebar:not(.fi-sidebar-open) .fi-sidebar-group-items,
+    .fi-body-has-sidebar-collapsible-on-desktop .fi-sidebar:not(.fi-sidebar-open) .fi-sidebar-item {
+        width: 100%;
+        align-items: center;
+    }
+
+    .fi-body-has-sidebar-collapsible-on-desktop .fi-sidebar:not(.fi-sidebar-open) .fi-sidebar-nav-groups {
+        gap: 1rem;
+    }
+
+    /* Square icon buttons, centred in the rail. */
+    .fi-body-has-sidebar-collapsible-on-desktop .fi-sidebar:not(.fi-sidebar-open) .fi-sidebar-item-btn,
+    .fi-body-has-sidebar-collapsible-on-desktop .fi-sidebar:not(.fi-sidebar-open) .fi-sidebar-group-dropdown-trigger-btn {
+        flex: none;
+        justify-content: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        aspect-ratio: 1;
+        margin-inline: auto;
+        padding: 0;
+    }
+
+    /* Badges stay, as a small count on the icon's corner. Filament hides them with x-show
+       while collapsed, hence !important over its inline display: none. */
+    .fi-body-has-sidebar-collapsible-on-desktop .fi-sidebar:not(.fi-sidebar-open) .fi-sidebar-item-btn {
+        position: relative;
+    }
+
+    .fi-body-has-sidebar-collapsible-on-desktop .fi-sidebar:not(.fi-sidebar-open) .fi-sidebar-item-badge-ctn {
+        display: flex !important;
+        position: absolute;
+        top: -0.3rem;
+        inset-inline-end: -0.3rem;
+        pointer-events: none;
+    }
+}
+
+/* A small count on a button's corner, clear of its icon: the collapsed rail's badges, the
+   notification bell's and the table toolbar's (columns, filters). Filament pins badge text
+   to the baseline, which sits it off centre in a pill this small: centre it instead. */
+/* The table toolbar's column and filter buttons: the same dot, on the icon's top-right corner
+   (Filament centres the badge on its anchor point). */
+.fi-ta-header-toolbar .fi-icon-btn > .fi-icon-btn-badge-ctn {
+    top: calc(50% - 0.5rem);
+    inset-inline-start: calc(50% + 0.5rem);
+    background: transparent;
+}
+
+/* No filters on: no count (Filament would show "0"; AppServiceProvider tags the button). */
+.fi-icon-btn[data-active-filters='0'] > .fi-icon-btn-badge-ctn {
+    display: none;
+}
+
+/* Filament centres the badge on its anchor point: put that on the bell's top-right corner. */
+.fi-topbar-database-notifications-btn > .fi-icon-btn-badge-ctn {
+    top: 0.45rem;
+    inset-inline-start: 1.75rem;
+    background: transparent;
+}
+
+.fi-topbar-database-notifications-btn > .fi-icon-btn-badge-ctn .fi-badge,
+.fi-ta-header-toolbar .fi-icon-btn > .fi-icon-btn-badge-ctn .fi-badge,
+.fi-body-has-sidebar-collapsible-on-desktop .fi-sidebar:not(.fi-sidebar-open) .fi-sidebar-item-badge-ctn .fi-badge {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1rem;
+    height: 1rem;
+    min-height: 0;
+    padding: 0 0.25rem;
+    gap: 0;
+    border-radius: 9999px;
+    font-family: inherit;
+    font-size: 0.625rem;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    background: var(--primary-600);
+    color: #fff;
+    box-shadow: 0 0 0 2px var(--aurora-card-solid);
+}
+
+.fi-topbar-database-notifications-btn > .fi-icon-btn-badge-ctn .fi-badge-label-ctn,
+.fi-ta-header-toolbar .fi-icon-btn > .fi-icon-btn-badge-ctn .fi-badge-label-ctn,
+.fi-body-has-sidebar-collapsible-on-desktop .fi-sidebar:not(.fi-sidebar-open) .fi-sidebar-item-badge-ctn .fi-badge-label-ctn {
+    display: block;
+    align-self: center;
+}
+
+/* Notifications: a dropdown under the bell, like the user menu (vendor override of
+   filament-notifications::database-notifications). */
+.fi-dropdown-panel:has(> .cms-notifications-header) {
+    width: min(24rem, calc(100vw - 2rem));
+    max-width: none;
+    overflow: hidden;
+}
+
+.cms-notifications-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem 0.75rem;
+    border-bottom: 1px solid var(--aurora-hairline);
+}
+
+.cms-notifications-heading {
+    font-family: var(--aurora-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--gray-950);
+}
+
+.dark .cms-notifications-heading {
+    color: #fff;
+}
+
+.cms-notifications-list {
+    max-height: min(28rem, 70vh);
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.cms-notifications-list > :last-child .fi-no-notification {
+    border-bottom: 0;
+}
+
+/* Denser rows than a toast: it's a list to glance through. */
+.cms-notifications-list .fi-no-notification {
+    padding: 0.75rem 1rem;
+}
+
+.cms-notifications-list .fi-no-notification .fi-btn {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.8125rem;
+}
+
+.cms-notifications-footer {
+    padding: 0.5rem 1rem;
+    border-top: 1px solid var(--aurora-hairline);
+}
+
+.cms-notifications-empty {
+    display: grid;
+    justify-items: center;
+    gap: 0.25rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--gray-500);
+}
+
+.cms-notifications-empty svg {
+    margin-bottom: 0.5rem;
+    color: var(--gray-400);
+}
+
+.cms-notifications-empty-heading {
+    font-weight: 600;
+    color: var(--gray-950);
+}
+
+.dark .cms-notifications-empty-heading {
+    color: #fff;
+}
+
+/* Notifications in the list: rows with dividers, not floating toast cards. */
+.cms-notifications-list .fi-no-notification {
+    border: 0;
+    border-bottom: 1px solid var(--aurora-hairline);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* On phones the sidebar slides over the page. */
+.fi-sidebar.fi-sidebar-open {
+    background: transparent;
+}
+
+@media (max-width: 1023px) {
+    .fi-sidebar.fi-sidebar-open {
+        background: var(--aurora-bg);
+    }
+}
+
+/* ── Page header ──────────────────────────────────────────────────────── */
+
+.fi-header-heading {
+    font-family: var(--aurora-display);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    background: linear-gradient(95deg, var(--gray-950) 30%, var(--primary-700) 110%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.dark .fi-header-heading {
+    background-image: linear-gradient(95deg, #fff 30%, var(--primary-300) 110%);
+}
+
+.fi-header-subheading {
+    color: var(--gray-500);
+}
+
+.fi-breadcrumbs-item-label {
+    font-family: var(--aurora-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* ── Surfaces: glass cards with a glowing edge ────────────────────────── */
+
+.fi-section:not(.fi-section-not-contained):not(.fi-aside),
+.fi-ta-ctn,
+.fi-wi-stats-overview-stat,
+.fi-fo-repeater-item,
+.fi-in-repeatable-item {
+    border: 1px solid transparent;
+    border-radius: 1.5rem;
+    background:
+        linear-gradient(var(--aurora-card-solid), var(--aurora-card-solid)) padding-box,
+        var(--aurora-edge) border-box;
+    box-shadow: var(--aurora-shadow);
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+.dark .fi-section:not(.fi-section-not-contained):not(.fi-aside),
+.dark .fi-ta-ctn,
+.dark .fi-wi-stats-overview-stat,
+.dark .fi-fo-repeater-item,
+.dark .fi-in-repeatable-item {
+    background:
+        linear-gradient(var(--aurora-card), var(--aurora-card)) padding-box,
+        var(--aurora-edge) border-box;
+}
+
+.fi-section:not(.fi-section-not-contained):not(.fi-aside) > .fi-section-header {
+    padding-block: 1.125rem;
+}
+
+.fi-section-header-heading {
+    font-family: var(--aurora-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+/* Section icons glow in a small neon tile. */
+.fi-section > .fi-section-header > .fi-icon {
+    box-sizing: content-box;
+    padding: 0.45rem;
+    margin-top: -0.15rem;
+    border-radius: 0.75rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary-600), color-mix(in oklch, var(--primary-500) 60%, var(--aurora-cyan)));
+    box-shadow: 0 6px 16px -6px color-mix(in oklch, var(--primary-600) 90%, transparent), inset 0 1px 0 rgb(255 255 255 / 0.25);
+}
+
+/* A table standing in for a section gets the same tile (Aurora\Support\TableHeading), set beside
+   both its heading and description. */
+.fi-ta-header > div:has(.cms-ta-heading-icon) {
+    position: relative;
+    min-height: 2.5rem;
+    padding-inline-start: 3.25rem;
+}
+
+.cms-ta-heading-icon {
+    position: absolute;
+    top: -0.15rem;
+    inset-inline-start: 0;
+    box-sizing: content-box;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.45rem;
+    border-radius: 0.75rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary-600), color-mix(in oklch, var(--primary-500) 60%, var(--aurora-cyan)));
+    box-shadow: 0 6px 16px -6px color-mix(in oklch, var(--primary-600) 90%, transparent), inset 0 1px 0 rgb(255 255 255 / 0.25);
+}
+
+/* Stats: big display numbers in a gradient; the sparkline stays inside the card. */
+.fi-wi-stats-overview-stat {
+    overflow: hidden;
+}
+
+.fi-wi-stats-overview-stat-label {
+    font-family: var(--aurora-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.fi-wi-stats-overview-stat-value {
+    font-family: var(--aurora-display);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    background: linear-gradient(95deg, var(--gray-950), var(--primary-600));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.dark .fi-wi-stats-overview-stat-value {
+    background-image: linear-gradient(95deg, #fff, var(--primary-300));
+}
+
+/* ── Buttons: pills, with a neon primary ──────────────────────────────── */
+
+.fi-btn:not(.fi-btn-group .fi-btn):not(.fi-fo-toggle-buttons .fi-btn) {
+    border-radius: 9999px;
+    padding-inline: 1rem;
+}
+
+.fi-btn {
+    transition: transform 160ms, box-shadow 160ms, background-position 600ms, filter 160ms;
+}
+
+.fi-btn.fi-color-primary:not(.fi-outlined):not(label):not([aria-pressed]) {
+    background-image: linear-gradient(110deg, var(--primary-700) 0%, var(--primary-500) 38%, #c026d3 62%, var(--primary-500) 82%, var(--aurora-cyan) 120%);
+    background-size: 220% 100%;
+    background-position: 0% 50%;
+    color: #fff;
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.28),
+        inset 0 -1px 0 rgb(0 0 0 / 0.12),
+        0 10px 26px -10px color-mix(in oklch, var(--primary-600) 90%, transparent),
+        0 0 0 1px color-mix(in oklch, var(--primary-700) 60%, transparent);
+}
+
+.fi-btn.fi-color-primary:not(.fi-outlined):not(label):not([aria-pressed]):not(.fi-disabled):not([disabled]):hover {
+    background-position: 70% 50%;
+    transform: translateY(-1px);
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.3),
+        0 16px 34px -12px color-mix(in oklch, var(--primary-600) 95%, transparent),
+        0 0 22px -4px color-mix(in oklch, #c026d3 55%, transparent),
+        0 0 0 1px color-mix(in oklch, var(--primary-700) 60%, transparent);
+}
+
+.fi-btn.fi-color-primary:not(.fi-outlined):not(label):not([aria-pressed]):active {
+    transform: translateY(0);
+}
+
+/* Secondary buttons: glass chips. */
+.fi-btn:not(.fi-color):not(label):not([aria-pressed]) {
+    background: color-mix(in oklch, var(--aurora-card-solid) 75%, transparent);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.06), inset 0 0 0 1px var(--aurora-hairline);
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+.fi-btn:not(.fi-color):not(label):not([aria-pressed]):hover {
+    box-shadow: 0 4px 14px -6px color-mix(in oklch, var(--primary-500) 45%, transparent), inset 0 0 0 1px color-mix(in oklch, var(--primary-500) 35%, transparent);
+}
+
+.fi-icon-btn {
+    border-radius: 0.75rem;
+}
+
+/* ── Form fields ──────────────────────────────────────────────────────── */
+
+.fi-input-wrp {
+    border-radius: 0.875rem;
+    background: var(--aurora-field);
+    transition: box-shadow 160ms;
+}
+
+.fi-input-wrp:focus-within:not(.fi-disabled) {
+    box-shadow:
+        0 0 0 1px var(--primary-500),
+        0 0 0 4px color-mix(in oklch, var(--primary-500) 16%, transparent),
+        0 0 18px -4px color-mix(in oklch, var(--primary-500) 45%, transparent);
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+.fi-fo-field-label-content {
+    font-weight: 550;
+}
+
+.fi-checkbox-input {
+    border-radius: 0.375rem;
+}
+
+/* ── Tables ───────────────────────────────────────────────────────────── */
+
+/* No overflow clipping on the card: it would also clip row action menus (dropdowns are
+   not teleported). The rounded corners are kept by rounding the first and last parts. */
+.fi-ta-ctn > :first-child {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+.fi-ta-ctn > :last-child {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+.fi-ta-header-cell-label,
+.fi-ta-header-cell {
+    font-family: var(--aurora-mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+}
+
+.fi-ta-row {
+    transition: background-color 120ms, box-shadow 120ms;
+}
+
+.fi-ta-row:hover {
+    background: color-mix(in oklch, var(--primary-500) 4%, transparent);
+    box-shadow: inset 3px 0 0 var(--primary-500);
+}
+
+/* Pagination: separate round buttons with a little room, the current page a violet pill. */
+.fi-pagination .fi-pagination-items {
+    gap: 0.25rem;
+    padding: 0.25rem;
+    border-radius: 9999px;
+    background: color-mix(in oklch, var(--aurora-card-solid) 70%, transparent);
+    box-shadow: inset 0 0 0 1px var(--aurora-hairline);
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+.fi-pagination .fi-pagination-item {
+    border: 0;
+}
+
+.fi-pagination .fi-pagination-item .fi-pagination-item-btn {
+    min-width: 2.25rem;
+    height: 2.25rem;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.5rem;
+    border-radius: 9999px;
+    transition: background-color 160ms, box-shadow 160ms;
+}
+
+/* Hover like the sidebar items; the current page stays the violet pill, hovered or not. */
+.fi-pagination .fi-pagination-item:not(.fi-active) .fi-pagination-item-btn:enabled:hover {
+    background: var(--aurora-rail-hover);
+}
+
+.fi-pagination .fi-pagination-item.fi-active .fi-pagination-item-btn,
+.fi-pagination .fi-pagination-item.fi-active .fi-pagination-item-btn:hover {
+    background: var(--aurora-rail-active-bg);
+    box-shadow: var(--aurora-rail-active-shadow);
+    cursor: default;
+}
+
+.fi-pagination .fi-pagination-item.fi-active .fi-pagination-item-label {
+    color: #fff;
+}
+
+.fi-pagination .fi-pagination-item-label {
+    padding: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── Badges, tabs, dropdowns, modals, notifications ───────────────────── */
+
+.fi-badge {
+    border-radius: 9999px;
+    padding-inline: 0.6rem;
+}
+
+.fi-tabs:not(.fi-contained) {
+    border-radius: 9999px;
+    padding: 0.3rem;
+    background: color-mix(in oklch, var(--aurora-card-solid) 80%, transparent);
+    box-shadow: var(--aurora-shadow), inset 0 0 0 1px var(--aurora-hairline);
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+.fi-tabs-item {
+    border-radius: 9999px;
+    transition: background-color 160ms, color 160ms, box-shadow 160ms;
+}
+
+.fi-tabs-item.fi-active {
+    background: var(--aurora-ink);
+    box-shadow: 0 8px 20px -8px color-mix(in oklch, var(--primary-600) 70%, transparent), inset 0 0 0 1px rgb(255 255 255 / 0.08);
+}
+
+.fi-tabs-item.fi-active .fi-tabs-item-label {
+    color: #fff;
+}
+
+.fi-tabs-item.fi-active .fi-icon {
+    color: var(--aurora-cyan);
+}
+
+.dark .fi-tabs-item.fi-active {
+    background: color-mix(in oklch, var(--primary-500) 28%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--primary-400) 40%, transparent);
+}
+
+.fi-dropdown-panel {
+    border-radius: 1.125rem;
+    background: var(--aurora-card-solid);
+    box-shadow: var(--aurora-shadow-lifted), inset 0 0 0 1px var(--aurora-hairline);
+    --tw-ring-shadow: 0 0 #0000;
+    overflow: hidden;
+}
+
+/* Long lists (selects, the folder tree) scroll inside the panel: the rule above would clip them. */
+.fi-dropdown-panel.fi-scrollable {
+    overflow-y: auto;
+}
+
+/* Items follow the panel's corners: its radius less the list's padding. */
+.fi-dropdown-list-item {
+    border-radius: calc(1.125rem - 0.25rem);
+}
+
+.fi-dropdown-list-item {
+    border-radius: 0.625rem;
+}
+
+.fi-modal-window {
+    border: 1px solid transparent;
+    border-radius: 1.75rem;
+    background:
+        linear-gradient(var(--aurora-card-solid), var(--aurora-card-solid)) padding-box,
+        var(--aurora-edge) border-box;
+    box-shadow: var(--aurora-shadow-lifted);
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+/* Slide-overs (notifications, submissions, …) run edge to edge: square, with the edge line
+   only on the side that faces the page. */
+.fi-modal-slide-over .fi-modal-window {
+    border-width: 0 0 0 1px;
+    border-radius: 0;
+}
+
+.fi-modal-slide-over.fi-modal-slide-over-from-start .fi-modal-window {
+    border-width: 0 1px 0 0;
+}
+
+.fi-modal-close-overlay {
+    background: rgb(10 8 30 / 0.4);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.fi-modal-heading {
+    font-family: var(--aurora-display);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+}
+
+/* Notifications: cards like the command palette's (bottom right, see AppServiceProvider). */
+.fi-no-notification {
+    border: 1px solid transparent;
+    border-radius: 1.125rem;
+    background:
+        linear-gradient(var(--aurora-card-solid), var(--aurora-card-solid)) padding-box,
+        var(--aurora-edge) border-box;
+    box-shadow: var(--aurora-shadow-lifted);
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+.fi-no-notification .fi-no-notification-title {
+    font-family: var(--aurora-display);
+    font-weight: 600;
+}
+
+/* Coloured buttons (Delete, Publish …) as glass chips with a coloured label, like the
+   buttons beside them; only the primary action is filled. Filament sets --color-* per colour. */
+.fi-btn:is(.fi-color-danger, .fi-color-success, .fi-color-warning, .fi-color-info):not(.fi-outlined):not(label):not([aria-pressed]) {
+    color: var(--color-600);
+    background: color-mix(in oklch, var(--aurora-card-solid) 75%, transparent);
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.06), inset 0 0 0 1px color-mix(in oklch, var(--color-500) 30%, transparent);
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+.dark .fi-btn:is(.fi-color-danger, .fi-color-success, .fi-color-warning, .fi-color-info):not(.fi-outlined):not(label):not([aria-pressed]) {
+    color: var(--color-400);
+}
+
+.fi-btn:is(.fi-color-danger, .fi-color-success, .fi-color-warning, .fi-color-info):not(.fi-outlined):not(label):not([aria-pressed]) .fi-icon {
+    color: currentColor;
+}
+
+.fi-btn:is(.fi-color-danger, .fi-color-success, .fi-color-warning, .fi-color-info):not(.fi-outlined):not(label):not([aria-pressed]):not(.fi-disabled):not([disabled]):hover {
+    background: color-mix(in oklch, var(--color-500) 14%, var(--aurora-card-solid));
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.06), inset 0 0 0 1px color-mix(in oklch, var(--color-500) 50%, transparent);
+}
+
+.fi-callout {
+    border-radius: 1.125rem;
+}
+
+/* ── Sign-in and other simple pages ───────────────────────────────────── */
+
+.fi-simple-layout {
+    background-color: #07061a;
+    background-image:
+        radial-gradient(70rem 40rem at 12% 0%, color-mix(in oklch, var(--primary-600) 60%, transparent), transparent 62%),
+        radial-gradient(55rem 35rem at 96% 12%, color-mix(in oklch, var(--aurora-cyan) 38%, transparent), transparent 62%),
+        radial-gradient(60rem 40rem at 50% 118%, color-mix(in oklch, var(--aurora-pink) 28%, transparent), transparent 62%),
+        linear-gradient(rgb(255 255 255 / 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+    background-size: auto, auto, auto, 40px 40px, 40px 40px;
+}
+
+.fi-simple-main {
+    border: 1px solid transparent;
+    border-radius: 2rem;
+    background:
+        linear-gradient(rgb(255 255 255 / 0.985), rgb(255 255 255 / 0.985)) padding-box,
+        linear-gradient(140deg, color-mix(in oklch, var(--primary-400) 80%, transparent), rgb(255 255 255 / 0.4) 40%, color-mix(in oklch, var(--aurora-cyan) 70%, transparent)) border-box;
+    box-shadow:
+        0 40px 100px -30px rgb(0 0 0 / 0.7),
+        0 0 80px -30px color-mix(in oklch, var(--primary-500) 70%, transparent);
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+.dark .fi-simple-main {
+    background:
+        linear-gradient(rgb(16 14 32 / 0.92), rgb(16 14 32 / 0.92)) padding-box,
+        linear-gradient(140deg, color-mix(in oklch, var(--primary-400) 70%, transparent), rgb(255 255 255 / 0.08) 40%, color-mix(in oklch, var(--aurora-cyan) 60%, transparent)) border-box;
+}
+
+/* The frosted glass sits behind the card, not on it: a backdrop-filter on the card would make
+   it the frame for everything fixed inside, so its dialogs would be clipped to the card. */
+.fi-simple-main {
+    position: relative;
+    isolation: isolate;
+}
+
+.dark .fi-simple-main::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    backdrop-filter: blur(24px);
+    pointer-events: none;
+}
+
+.fi-simple-header-heading {
+    font-family: var(--aurora-display);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+}
+
+.fi-simple-layout-header .fi-icon-btn {
+    color: rgb(255 255 255 / 0.8);
+}
+
+/* ── Details ──────────────────────────────────────────────────────────── */
+
+::selection {
+    background: color-mix(in oklch, var(--primary-500) 28%, transparent);
+}
+
+/* ── User menu (resources/views/vendor/filament-panels/components/user-menu) ── */
+
+.cms-user-menu-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0.375rem;
+    padding: 0.75rem;
+    border-radius: 0.875rem;
+    background:
+        radial-gradient(14rem 8rem at 0% 0%, color-mix(in oklch, var(--primary-500) 14%, transparent), transparent 70%),
+        radial-gradient(12rem 8rem at 100% 100%, color-mix(in oklch, var(--aurora-cyan) 12%, transparent), transparent 70%);
+    box-shadow: inset 0 0 0 1px var(--aurora-hairline);
+    transition: box-shadow 160ms;
+}
+
+.cms-user-menu-card:hover {
+    box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--primary-500) 35%, transparent);
+}
+
+.cms-user-menu-name {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: var(--aurora-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--gray-950);
+}
+
+.cms-user-menu-email {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    color: var(--gray-500);
+}
+
+.cms-user-menu-role {
+    display: inline-block;
+    margin-top: 0.3rem;
+    padding: 0.05rem 0.5rem;
+    border-radius: 9999px;
+    font-family: var(--aurora-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--primary-700);
+    background: color-mix(in oklch, var(--primary-500) 12%, transparent);
+}
+
+.dark .cms-user-menu-name {
+    color: #fff;
+}
+
+.dark .cms-user-menu-role {
+    color: var(--primary-300);
+}
+
+.cms-user-menu-appearance {
+    padding: 0.5rem 0.75rem 0.625rem;
+    border-top: 1px solid var(--aurora-hairline);
+}
+
+.cms-user-menu-label {
+    margin-bottom: 0.4rem;
+    font-family: var(--aurora-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+}
+
+.cms-user-menu-segment {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.2rem;
+    padding: 0.2rem;
+    border-radius: 0.75rem;
+    background: rgb(128 128 128 / 0.09);
+}
+
+.cms-user-menu-segment > button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.25rem;
+    border-radius: 0.55rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--gray-500);
+    transition: background-color 150ms, color 150ms, box-shadow 150ms;
+}
+
+.cms-user-menu-segment > button:hover {
+    color: var(--gray-900);
+}
+
+.cms-user-menu-segment > button.cms-active {
+    background: var(--aurora-card-solid);
+    color: var(--primary-600);
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.1), inset 0 0 0 1px var(--aurora-hairline);
+}
+
+.dark .cms-user-menu-segment > button:hover {
+    color: #fff;
+}
+
+.dark .cms-user-menu-segment > button.cms-active {
+    background: rgb(255 255 255 / 0.1);
+    color: #fff;
+}
+
+
+/* The app name beside the logo mark (resources/views/filament/brand.blade.php). */
+.cms-wordmark {
+    font-family: var(--aurora-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1;
+}
+
+/* ── Command palette (usamamuneerchaudhary/filament-command-palette) ───── */
+
+.fi-cp-root {
+    --fi-cp-bg: var(--aurora-card-solid);
+    --fi-cp-bg-muted: transparent;
+    --fi-cp-border: var(--aurora-hairline);
+    --fi-cp-overlay: rgb(10 8 30 / 0.4);
+    --fi-cp-selected-bg: var(--aurora-rail-active-bg);
+    --fi-cp-hover-bg: rgb(128 128 128 / 0.08);
+}
+
+.fi-cp-root .fi-cp-backdrop {
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.fi-cp-root .fi-cp-panel {
+    border: 1px solid transparent;
+    border-radius: 1.5rem;
+    background:
+        linear-gradient(var(--aurora-card-solid), var(--aurora-card-solid)) padding-box,
+        var(--aurora-edge) border-box;
+    box-shadow: var(--aurora-shadow-lifted);
+    overflow: hidden;
+}
+
+.fi-cp-root .fi-cp-search {
+    border-bottom: 1px solid var(--aurora-hairline);
+}
+
+/* Just the search field until something is typed (see the palette's script override). */
+.fi-cp-root[data-cp-collapsed] .fi-cp-results {
+    display: none;
+}
+
+.fi-cp-root[data-cp-collapsed] .fi-cp-search {
+    border-bottom-color: transparent;
+}
+
+.fi-cp-root .fi-cp-search-input {
+    font-size: 1rem;
+}
+
+.fi-cp-root .fi-cp-search-icon {
+    color: var(--primary-500);
+}
+
+.fi-cp-root .fi-cp-group-label {
+    padding-top: 0.75rem;
+    background: transparent;
+    font-family: var(--aurora-mono);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+}
+
+/* Results look like sidebar items: roomy rounded rows, muted outline icons, medium labels. */
+.fi-cp-root .fi-cp-item {
+    gap: 0.75rem;
+    margin: 0.125rem 0.5rem;
+    padding: 0.55rem 0.75rem;
+    border-radius: 0.875rem;
+    font-weight: 500;
+    color: var(--aurora-rail-text);
+    transition: background-color 150ms, box-shadow 150ms, color 150ms;
+}
+
+.fi-cp-root .fi-cp-item:hover {
+    background: var(--aurora-rail-hover);
+    color: var(--aurora-rail-strong);
+}
+
+.fi-cp-root .fi-cp-item-icon,
+.fi-cp-root .fi-cp-item-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.fi-cp-root .fi-cp-item.is-selected {
+    color: #fff;
+    font-weight: 600;
+}
+
+.fi-cp-root .fi-cp-item.is-selected,
+.fi-cp-root .fi-cp-item.is-selected:hover {
+    background: var(--aurora-rail-active-bg);
+    box-shadow: var(--aurora-rail-active-shadow);
+}
+
+.fi-cp-root .fi-cp-item-icon {
+    color: var(--aurora-rail-muted);
+}
+
+.fi-cp-root .fi-cp-item:hover .fi-cp-item-icon {
+    color: var(--aurora-rail-strong);
+}
+
+.fi-cp-root .fi-cp-item.is-selected .fi-cp-item-icon {
+    color: #fff;
+}
+
+.fi-cp-root .fi-cp-footer {
+    border-top: 1px solid var(--aurora-hairline);
+    background: rgb(128 128 128 / 0.04);
+}
+
+.fi-cp-root .fi-cp-kbd {
+    border-radius: 0.375rem;
+    font-family: var(--aurora-mono);
+}
+
+
+/* Global search results: the same card as the user menu and other dropdowns. */
+.fi-global-search-results-ctn {
+    margin-top: 0.625rem;
+    border-radius: 1.125rem;
+    background: var(--aurora-card-solid);
+    box-shadow: var(--aurora-shadow-lifted), inset 0 0 0 1px var(--aurora-hairline);
+    --tw-ring-shadow: 0 0 #0000;
+    scrollbar-width: thin;
+}
+
+.fi-global-search-result-group-header {
+    padding-top: 0.75rem;
+    border-color: var(--aurora-hairline);
+    background: var(--aurora-card-solid);
+    font-family: var(--aurora-mono);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+}
+
+.fi-global-search-result,
+.fi-global-search-result:hover,
+.fi-global-search-result:focus-within {
+    border-color: var(--aurora-hairline);
+    background: transparent;
+}
+
+.fi-global-search-result-link {
+    margin: 0.25rem 0.375rem;
+    border-radius: 0.875rem;
+    transition: background-color 120ms;
+}
+
+.fi-global-search-result-link:hover,
+.fi-global-search-result-link:focus-visible {
+    background: var(--aurora-rail-hover);
+}
+
+/* A person's name with their avatar (Aurora\Support\UserBadge). In a select's chosen value
+   and options, it sits in the line's middle rather than on its baseline. */
+.cms-user-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    vertical-align: middle;
+}
+
+.fi-select-input-value-label:has(> .cms-user-badge, > .cms-grantee-option),
+.fi-select-input-option:has(> .cms-user-badge, > .cms-grantee-option) {
+    display: flex;
+    align-items: center;
+}
+
+.cms-user-badge-avatar {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex: none;
+    border-radius: 9999px;
+    object-fit: cover;
+    box-shadow: 0 0 0 1px var(--aurora-hairline);
+}
+
+.cms-user-badge-text {
+    color: var(--gray-500);
+}
+
+/* Tooltips (tippy.js): a dark glass pill with a violet edge, the same in both themes. The
+   arrow follows --tippy-background-color, so box and arrow stay one colour. */
+.tippy-box,
+.tippy-box[data-theme~='light'],
+.tippy-box[data-theme~='dark'] {
+    --tippy-background-color: #17142e;
+
+    border-radius: 0.625rem;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.35;
+    box-shadow:
+        0 10px 24px -8px rgb(13 11 31 / 0.55),
+        inset 0 0 0 1px color-mix(in oklch, var(--primary-400) 30%, transparent);
+}
+
+.tippy-box .tippy-content {
+    padding: 0.35rem 0.6rem;
+}
+
+.dark .tippy-box,
+.dark .tippy-box[data-theme~='light'],
+.dark .tippy-box[data-theme~='dark'] {
+    --tippy-background-color: #221d40;
+}
+
+/* Settings: the Languages and Sites tabs save through their own dialogs, so the page's Save button goes. */
+.fi-page:has(.fi-tabs-item.fi-active:is([data-tab-key='languages'], [data-tab-key='sites'])) .cms-settings-save {
+    display: none;
+}
+
+/* Page header buttons sit on the right on phones too, where the header stacks; the primary
+   action stays at the end. */
+.fi-header .fi-header-actions-ctn {
+    align-self: flex-end;
+}
+
+.fi-header .fi-header-actions-ctn > .fi-ac {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+/* People picker (Aurora\Support\PeoplePicker): rows like the sidebar items, a violet check. */
+.cms-people-row:hover {
+    background: var(--aurora-rail-hover);
+}
+
+.cms-people-row:has(input:checked) {
+    background: color-mix(in oklch, var(--primary-500) 12%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--primary-500) 35%, transparent);
+}
+
+.cms-people-row:has(input:focus-visible) {
+    box-shadow: inset 0 0 0 2px var(--primary-500);
+}
+
+.cms-people-check .fi-icon {
+    opacity: 0;
+}
+
+.cms-people-row input:checked ~ .cms-people-check {
+    background: var(--aurora-rail-active-bg);
+    box-shadow: var(--aurora-rail-active-shadow);
+}
+
+.cms-people-row input:checked ~ .cms-people-check .fi-icon {
+    opacity: 1;
+}
+
+/* Links in the assistant's replies: violet pill buttons with an arrow, like the rest of the theme. */
+#copilot-messages .prose a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0.15rem 0;
+    padding: 0.3rem 0.7rem 0.3rem 0.8rem;
+    border-radius: 9999px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--primary-700);
+    text-decoration: none;
+    background: color-mix(in oklch, var(--primary-500) 12%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--primary-500) 30%, transparent);
+    transition: background-color 150ms, box-shadow 150ms, color 150ms;
+    vertical-align: baseline;
+}
+
+.dark #copilot-messages .prose a {
+    color: var(--primary-300);
+    background: color-mix(in oklch, var(--primary-500) 18%, transparent);
+}
+
+#copilot-messages .prose a::after {
+    content: '';
+    width: 0.8rem;
+    height: 0.8rem;
+    flex-shrink: 0;
+    background: currentColor;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath d='M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z'/%3E%3C/svg%3E") center / contain no-repeat;
+    transition: transform 150ms;
+}
+
+#copilot-messages .prose a:hover {
+    color: #fff;
+    background: var(--aurora-rail-active-bg);
+    box-shadow: var(--aurora-rail-active-shadow);
+}
+
+#copilot-messages .prose a:hover::after {
+    transform: translateX(2px);
+}
+
+/* The assistant's own dialogs sit above the chat panel (z-50), backdrop included. */
+.cms-assistant-dialogs .fi-modal-close-overlay,
+.cms-assistant-dialogs .fi-modal-window-ctn {
+    z-index: 60;
+}
+
+/* While any other dialog is open, the chat bubble and panel step below its backdrop. */
+body:has(.fi-modal.fi-modal-open:not(.cms-assistant-dialogs *)) :is(#cms-assistant, [aria-controls='cms-assistant']) {
+    z-index: 30;
+}
+
+/* In the visual editor the page sits in its own fixed layer, so its dialogs can't rise above
+   the chat: hide the chat while one is open instead. */
+body:has(.fpb):has(.fi-modal.fi-modal-open:not(.cms-assistant-dialogs *)) :is(#cms-assistant, [aria-controls='cms-assistant']) {
+    visibility: hidden;
+}
+
+/* "Write with AI" inside an editable table cell (->withAi() on a TextInputColumn). */
+.cms-ai-cell-button {
+    display: grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 9999px;
+    color: var(--primary-500);
+    transition: background-color 150ms, color 150ms;
+}
+
+.cms-ai-cell-button:hover,
+.cms-ai-cell-button:focus-visible {
+    color: var(--primary-400);
+    background: color-mix(in oklch, var(--primary-500) 15%, transparent);
+    outline: none;
+}
+
+/* Above the assistant's chat bubble, which sits in the same corner. */
+body:has([aria-controls='cms-assistant']) .fi-no {
+    padding-bottom: 5.5rem;
+}
+
+/* ── Page scrolling ──────────────────────────────────────────────────── */
+
+/* Room for the scrollbar always, so pages don't shift sideways when one gets long enough to scroll. */
+html {
+    scrollbar-gutter: stable;
+}
+
+/* The visual editor fills the window and scrolls inside its canvas: no gutter there. */
+html:has(.fpb) {
+    scrollbar-gutter: auto;
+}
+
+/* ── Sidebar: collapsing and expanding ───────────────────────────────── */
+
+/* Filament switches the desktop rail's width instantly; slide it instead. The labels still
+   fade in with Filament's own transition once there is room. */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+    .fi-body-has-sidebar-collapsible-on-desktop .fi-sidebar {
+        transition: width 220ms cubic-bezier(0.2, 0, 0, 1);
+    }
+}
+
+/* On desktop the sidebar doesn't slide, so it needs no translate: even a zero one makes it the
+   frame fixed-position dropdowns (the site switcher) are placed in, which put them off by the
+   sidebar's own offset and let it clip them. */
+@media (min-width: 1024px) {
+    .fi-sidebar {
+        /* Filament's lg:translate-x-0 sits on more specific selectors. */
+        translate: none;
+    }
+}
+
+/* ── Tabs in a card (page SEO, settings) ─────────────────────────────── */
+
+/* The same glass card as sections, with the pill tab bar used elsewhere. */
+.fi-sc-tabs.fi-contained {
+    border: 1px solid transparent;
+    border-radius: 1.5rem;
+    background:
+        linear-gradient(var(--aurora-card-solid), var(--aurora-card-solid)) padding-box,
+        var(--aurora-edge) border-box;
+    box-shadow: var(--aurora-shadow);
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+.dark .fi-sc-tabs.fi-contained {
+    background:
+        linear-gradient(var(--aurora-card), var(--aurora-card)) padding-box,
+        var(--aurora-edge) border-box;
+}
+
+.fi-sc-tabs.fi-contained > .fi-tabs.fi-contained {
+    width: fit-content;
+    max-width: calc(100% - 2rem);
+    margin: 1rem 1rem 0;
+    border: 0;
+    border-radius: 9999px;
+    padding: 0.3rem;
+    background: color-mix(in oklch, var(--aurora-card-solid) 80%, transparent);
+    box-shadow: var(--aurora-shadow), inset 0 0 0 1px var(--aurora-hairline);
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+/* ── Builder: "Insert between blocks" ────────────────────────────────── */
+
+/* Only while pointing at the gap between two items, not at an item (Filament shows the
+   buttons above and below whichever item is hovered). The gap itself is the hover target. */
+.fi-fo-builder .fi-fo-builder-add-between-items-ctn {
+    visibility: visible;
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.fi-fo-builder .fi-fo-builder-add-between-items-ctn::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 1rem;
+}
+
+.fi-fo-builder .fi-fo-builder-add-between-items {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms;
+}
+
+.fi-fo-builder .fi-fo-builder-add-between-items-ctn:is(:hover, :focus-within) .fi-fo-builder-add-between-items {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Grouped toggle buttons that fill their column (the page's publishing status). Each grows
+   from its label's width, and in a narrow column they drop their icons rather than wrap. */
+:has(> .fi-fo-toggle-buttons.cms-toggle-buttons-full) {
+    container-type: inline-size;
+}
+
+.fi-fo-toggle-buttons.fi-btn-group.cms-toggle-buttons-full {
+    display: flex;
+    width: 100%;
+}
+
+.fi-fo-toggle-buttons.fi-btn-group.cms-toggle-buttons-full > .fi-btn {
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+@container (max-width: 20rem) {
+    .fi-fo-toggle-buttons.fi-btn-group.cms-toggle-buttons-full > .fi-btn {
+        padding-inline: 0.5rem;
+    }
+
+    .fi-fo-toggle-buttons.fi-btn-group.cms-toggle-buttons-full > .fi-btn > .fi-icon {
+        display: none;
+    }
+}
+
+/* ── Toggle buttons (grouped) ────────────────────────────────────────── */
+
+/* A segmented control: the options sit in a soft track, and the chosen one is a pill tinted
+   in its own colour (gray when it has none). Not in the visual editor's inspector, where
+   they are separate buttons that wrap. */
+.fi-fo-toggle-buttons.fi-btn-group:not(.fpb-inspector *) {
+    gap: 0.25rem;
+    padding: 0.25rem;
+    border-radius: 0.875rem;
+    background: color-mix(in oklch, var(--gray-500) 8%, transparent);
+    box-shadow: inset 0 0 0 1px var(--aurora-hairline);
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+.fi-fo-toggle-buttons.fi-btn-group:not(.fpb-inspector *) > .fi-btn {
+    margin: 0;
+    border: 0;
+    border-radius: 0.625rem;
+    background: transparent;
+    box-shadow: none;
+    color: var(--gray-500);
+    transition: background-color 160ms, color 160ms, box-shadow 160ms;
+}
+
+.fi-fo-toggle-buttons.fi-btn-group:not(.fpb-inspector *) > .fi-btn .fi-icon {
+    color: currentColor;
+}
+
+.fi-fo-toggle-buttons.fi-btn-group:not(.fpb-inspector *) > .fi-btn[aria-pressed='false']:not([disabled]):hover {
+    background: color-mix(in oklch, var(--gray-500) 10%, transparent);
+    color: var(--gray-700);
+}
+
+.dark .fi-fo-toggle-buttons.fi-btn-group:not(.fpb-inspector *) > .fi-btn[aria-pressed='false']:not([disabled]):hover {
+    color: var(--gray-200);
+}
+
+.fi-fo-toggle-buttons.fi-btn-group:not(.fpb-inspector *) > .fi-btn[aria-pressed='true'] {
+    background: color-mix(in oklch, var(--color-500, var(--gray-500)) 16%, var(--aurora-card-solid));
+    color: var(--color-700, var(--gray-900));
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.08), inset 0 0 0 1px color-mix(in oklch, var(--color-500, var(--gray-500)) 45%, transparent);
+}
+
+.dark .fi-fo-toggle-buttons.fi-btn-group:not(.fpb-inspector *) > .fi-btn[aria-pressed='true'] {
+    color: var(--color-300, #fff);
+}
+
+/* Tables: "3 selected · Select all · Deselect all" takes the place of "Showing 1 to 10 of
+   40" in the pagination row, instead of pushing the table down from above. Only where
+   that overview shows (md and up); otherwise it stays above the table. */
+@media (min-width: 768px) {
+    .fi-ta-main:has(> .fi-pagination .fi-pagination-overview) {
+        position: relative;
+    }
+
+    .fi-ta-main:has(> .fi-pagination .fi-pagination-overview) > .fi-ta-selection-indicator {
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        inset-inline-start: 0;
+        inset-inline-end: calc(50% + 5rem);
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.25rem 0.75rem;
+        min-height: 3.75rem;
+        padding-block: 0.75rem;
+        border: 0;
+        background: transparent;
+    }
+
+    .fi-ta-main:has(> .fi-pagination .fi-pagination-overview) > .fi-ta-selection-indicator > :nth-child(2) {
+        margin-inline-start: 0;
+    }
+
+    .fi-ta-main:has(> .fi-ta-selection-indicator:not([hidden])) > .fi-pagination .fi-pagination-overview {
+        visibility: hidden;
+    }
+}
+
+/* PagePicker: one page, from the tree. Subpages indented under their page (not while
+   searching), the address below the title, in a box of its own that scrolls: five rows and
+   the edge of the next. With a search, the box keeps its height so the form doesn't jump. */
+.cms-page-picker {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.cms-page-picker-list {
+    position: relative;
+    display: grid;
+    align-content: start;
+    gap: 0.125rem;
+    max-height: 16.25rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    padding: 0.25rem;
+    border: 1px solid color-mix(in oklch, var(--color-gray-500) 22%, transparent);
+    border-radius: 1rem;
+    background: color-mix(in oklch, var(--color-gray-500) 4%, transparent);
+}
+
+.dark .cms-page-picker-list {
+    background: rgb(0 0 0 / 0.18);
+}
+
+@media (min-width: 40rem) {
+    .cms-page-picker-searchable .cms-page-picker-list {
+        height: 16.25rem;
+    }
+}
+
+.cms-page-picker-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+    border-radius: 0.75rem;
+    padding: 0.375rem 0.625rem;
+    cursor: pointer;
+    transition: background-color 120ms ease;
+}
+
+.cms-page-picker-option:hover {
+    background: color-mix(in oklch, var(--color-gray-500) 8%, transparent);
+}
+
+.cms-page-picker-option:has(input:checked) {
+    background: color-mix(in oklch, var(--color-primary-500) 10%, transparent);
+}
+
+.cms-page-picker-option .fi-radio-input {
+    flex-shrink: 0;
+}
+
+.cms-page-picker-text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    padding-inline-start: calc(var(--depth, 0) * 1.25rem);
+}
+
+.cms-page-picker-list-searched .cms-page-picker-text {
+    padding-inline-start: 0;
+}
+
+.cms-page-picker-title,
+.cms-page-picker-path {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cms-page-picker-title {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    color: var(--color-gray-950);
+}
+
+.dark .cms-page-picker-title {
+    color: var(--color-white);
+}
+
+.cms-page-picker-path {
+    font-family: var(--aurora-mono);
+    font-size: 0.6875rem;
+    line-height: 1rem;
+    color: var(--color-gray-400);
+}
+
+.cms-page-picker-badge {
+    flex-shrink: 0;
+    border-radius: 9999px;
+    padding: 0.0625rem 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--color-primary-600);
+    background: color-mix(in oklch, var(--color-primary-500) 12%, transparent);
+}
+
+.dark .cms-page-picker-badge {
+    color: var(--color-primary-300);
+}
+
+/* ->inModal(): the chosen page as a card (like a chosen file), the list in a dialog. */
+.cms-page-picker-chosen-wrp {
+    display: grid;
+    justify-items: start;
+    gap: 0.5rem;
+}
+
+.cms-page-picker-chosen {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    width: 100%;
+    min-width: 0;
+    padding: 0.5rem 0.5rem 0.5rem 0.75rem;
+    border: 1px solid color-mix(in oklch, var(--color-gray-500) 22%, transparent);
+    border-radius: 0.75rem;
+    background: color-mix(in oklch, var(--color-gray-500) 4%, transparent);
+}
+
+.dark .cms-page-picker-chosen {
+    background: rgb(0 0 0 / 0.18);
+}
+
+.cms-page-picker-chosen-icon {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-primary-500);
+}
+
+.cms-page-picker-clear {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 9999px;
+    color: var(--color-gray-400);
+    transition: background-color 120ms ease, color 120ms ease;
+}
+
+.cms-page-picker-clear:hover {
+    color: var(--color-gray-700);
+    background: color-mix(in oklch, var(--color-gray-500) 14%, transparent);
+}
+
+.dark .cms-page-picker-clear:hover {
+    color: var(--color-white);
+}
+
+.cms-page-picker-empty {
+    padding: 1.5rem 0.75rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--color-gray-500);
+}
+
+/* The media library's image preview and its variants open full size in a lightbox. */
+.cms-lightbox-trigger {
+    display: block;
+    width: 100%;
+    cursor: zoom-in;
+}
+
+.cms-lightbox-thumb {
+    flex-shrink: 0;
+    border-radius: 0.5rem;
+    cursor: zoom-in;
+    transition: opacity 120ms ease;
+}
+
+.cms-lightbox-thumb:hover {
+    opacity: 0.8;
+}
+
+.cms-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+    background: rgb(5 4 15 / 0.88);
+    backdrop-filter: blur(6px);
+    cursor: zoom-out;
+}
+
+.cms-lightbox-image {
+    max-width: 100%;
+    max-height: calc(100vh - 4rem);
+    object-fit: contain;
+    border-radius: 0.5rem;
+    box-shadow: 0 24px 80px -12px rgb(0 0 0 / 0.6);
+}
+
+.cms-lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    color: var(--color-white);
+    background: rgb(255 255 255 / 0.1);
+    transition: background-color 120ms ease;
+}
+
+.cms-lightbox-close:hover {
+    background: rgb(255 255 255 / 0.2);
+}
+
+/* Media library › Formats: the built-in sizes, above the formats that can be changed. */
+.cms-built-in-formats {
+    padding: 0.75rem 1rem;
+    border: 1px solid color-mix(in oklch, var(--color-gray-500) 22%, transparent);
+    border-radius: 1rem;
+    background: color-mix(in oklch, var(--color-gray-500) 4%, transparent);
+}
+
+.cms-built-in-formats-label {
+    margin-bottom: 0.375rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-gray-500);
+}
+
+.cms-built-in-formats ul {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.cms-built-in-formats li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+    font-size: 0.875rem;
+}
+
+.cms-built-in-formats li > span:first-child {
+    font-weight: 500;
+    color: var(--color-gray-950);
+}
+
+.dark .cms-built-in-formats li > span:first-child {
+    color: var(--color-white);
+}
+
+.cms-built-in-formats li > span:last-child {
+    color: var(--color-gray-500);
+}
+
+/* One card per format, its name above what it makes. */
+/* The schema's own gaps (between cards, and between a card's lines) are too roomy here. */
+.cms-format-list > .fi-sc {
+    gap: 0.5rem;
+}
+
+.cms-format-row .fi-sc {
+    gap: 0.125rem;
+}
+
+.cms-format-handle {
+    font-family: var(--aurora-mono);
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--color-gray-500);
+}
+
+.cms-format-row {
+    padding: 0.75rem 0.75rem 0.75rem 1rem;
+    border: 1px solid color-mix(in oklch, var(--color-gray-500) 22%, transparent);
+    border-radius: 1rem;
+    background: color-mix(in oklch, var(--color-gray-500) 4%, transparent);
+}
+
+.dark .cms-format-row {
+    background: rgb(0 0 0 / 0.18);
+}
+
+/* An image's Formats tab: a dot per size, green when made, yellow while being made, red
+   when missing. */
+.cms-format-status {
+    flex-shrink: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+}
+
+.cms-format-status-ready {
+    background: var(--color-success-500);
+}
+
+.cms-format-status-pending {
+    background: var(--color-warning-400);
+    animation: cms-format-pulse 1.2s ease-in-out infinite;
+}
+
+.cms-format-status-missing {
+    background: var(--color-danger-500);
+}
+
+@keyframes cms-format-pulse {
+    50% {
+        opacity: 0.35;
+    }
+}
+
+.cms-format-placeholder {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    color: var(--color-gray-400);
+    background: color-mix(in oklch, var(--color-gray-500) 8%, transparent);
+}
+
+/* A file's embedded data (EXIF, ID3): label and value per line, every tag folded away below. */
+.cms-exif-summary,
+.cms-exif-all dl {
+    display: grid;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.cms-exif-summary > div,
+.cms-exif-all dl > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    min-width: 0;
+}
+
+.cms-exif-summary dt,
+.cms-exif-all dt {
+    flex-shrink: 0;
+    color: var(--color-gray-500);
+}
+
+.cms-exif-summary dd,
+.cms-exif-all dd {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    text-align: end;
+    color: var(--color-gray-950);
+}
+
+.dark .cms-exif-summary dd,
+.dark .cms-exif-all dd {
+    color: var(--color-white);
+}
+
+.cms-exif-all summary {
+    cursor: pointer;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-primary-600);
+}
+
+.dark .cms-exif-all summary {
+    color: var(--color-primary-400);
+}
+
+.cms-exif-all dl {
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+}
+
+.cms-exif-all dt {
+    font-family: var(--aurora-mono);
+}
+
+/* A file or folder with its own access (AssetAccess): a small lock after its name. */
+.cms-access-lock {
+    flex-shrink: 0;
+    width: 0.875rem;
+    height: 0.875rem;
+    color: var(--color-gray-400);
+}
+
+/* The Access dialog's rules: one row each (who, what they can do), with its remove button
+   at the row's end instead of in a header of its own. */
+.cms-access-rules .fi-fo-repeater-item {
+    position: relative;
+}
+
+.cms-access-rules .fi-fo-repeater-item-header {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-end: 1rem;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    background: none;
+}
+
+.cms-access-rules .fi-fo-repeater-item-content {
+    padding-inline-end: 3.75rem;
+    border-top: 0;
+}
+
+/* A role, or everyone, in the Access dialog's select: an icon where a person has a picture. */
+.cms-grantee-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    vertical-align: middle;
+}
+
+.cms-grantee-option-icon {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.25rem;
+    border-radius: 9999px;
+    color: var(--color-gray-500);
+    background: color-mix(in oklch, var(--color-gray-500) 14%, transparent);
+}
+
+.cms-grantee-option-danger .cms-grantee-option-icon {
+    color: var(--color-danger-500);
+    background: color-mix(in oklch, var(--color-danger-500) 14%, transparent);
+}
+
