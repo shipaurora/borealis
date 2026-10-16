@@ -2484,3 +2484,13 @@ html:has(.fpb) {
     border-radius: 0.5rem;
     object-fit: cover;
 }
+
+/* Settings › Blocks: a block's picture as a small thumbnail at the start of its row. */
+.cms-block-preview-thumb img {
+    width: 5rem;
+    height: 3rem;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 0.5rem;
+    border: 1px solid color-mix(in oklch, var(--color-gray-500) 22%, transparent);
+}

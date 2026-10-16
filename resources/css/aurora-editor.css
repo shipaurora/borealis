@@ -724,3 +724,73 @@ body.fpb-edit-mode .fi-main {
         display: inline;
     }
 }
+
+/* A block's picture in its card in the editor's block list, between its name and its
+   description (Aurora's copy of the editor view). */
+.fpb .fpb-palette .fpb-palette-copy {
+    min-width: 0;
+}
+
+.fpb .fpb-palette .cms-palette-preview {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 0.375rem 0 0.25rem;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 0.5rem;
+    border: 1px solid var(--aurora-rail-line);
+    pointer-events: none;
+}
+
+/* Room above each category: every heading is first in its own group, so the page builder's
+   "no margin on the first one" took it from all of them. */
+.fpb .fpb-palette .fpb-palette-group-wrap + .fpb-palette-group-wrap .fpb-palette-group {
+    margin-top: 1.5rem;
+}
+
+.fpb .fpb-palette .fpb-palette-group {
+    margin-bottom: 0.5rem;
+}
+
+/* The same picture larger, beside the block list while pointing at the block
+   (block-previews.js). */
+.cms-block-preview {
+    position: fixed;
+    z-index: 60;
+    width: 24rem;
+    padding: 0.375rem;
+    border: 1px solid color-mix(in oklch, var(--color-gray-500) 25%, transparent);
+    border-radius: 0.875rem;
+    background: var(--color-white, #fff);
+    box-shadow: 0 18px 40px -12px rgb(0 0 0 / 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-4px);
+    transition: opacity 120ms, transform 120ms;
+}
+
+.dark .cms-block-preview {
+    background: var(--color-gray-900);
+}
+
+.cms-block-preview-shown {
+    opacity: 1;
+    transform: none;
+}
+
+.cms-block-preview img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 0.5rem;
+}
+
+/* The block's icon on its name's line in the block list (Aurora's copy of the editor view). */
+.fpb .fpb-palette .cms-palette-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
