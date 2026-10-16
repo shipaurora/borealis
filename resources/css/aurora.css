@@ -2309,3 +2309,150 @@ html:has(.fpb) {
     margin-inline-start: 0.25rem;
     color: var(--gray-400);
 }
+
+/* Layout picker (Aurora\Filament\Forms\Components\LayoutPicker): cards with a thumbnail of
+   the page drawn with each layout, a 1280 px wide frame scaled down to the card. */
+.cms-layout-picker {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    gap: 0.75rem;
+}
+
+.cms-layout-picker-option {
+    display: grid;
+    /* Cards in a row share its height: the thumbnail and text stay at the top. */
+    align-content: start;
+    gap: 0.625rem;
+    padding: 0.5rem 0.5rem 0.75rem;
+    border: 1px solid color-mix(in oklch, var(--color-gray-500) 22%, transparent);
+    border-radius: 1rem;
+    background: color-mix(in oklch, var(--color-gray-500) 4%, transparent);
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.dark .cms-layout-picker-option {
+    background: rgb(0 0 0 / 0.18);
+}
+
+.cms-layout-picker-option:hover {
+    border-color: color-mix(in oklch, var(--color-primary-500) 45%, transparent);
+}
+
+.cms-layout-picker-option:has(input:checked) {
+    border-color: var(--color-primary-500);
+    box-shadow: 0 0 0 1px var(--color-primary-500);
+}
+
+.cms-layout-picker-option:has(input:focus-visible) {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+}
+
+.cms-layout-thumb {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    border-radius: 0.625rem;
+    background: color-mix(in oklch, var(--color-gray-500) 12%, transparent);
+    pointer-events: none;
+}
+
+.cms-layout-thumb iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1280px;
+    height: 800px;
+    border: 0;
+    overflow: hidden;
+    /* A picture of the page, not a page to use: no scrolling, clicks go to the card. */
+    pointer-events: none;
+    transform-origin: 0 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.cms-layout-thumb-ready iframe {
+    opacity: 1;
+}
+
+.cms-layout-thumb-empty {
+    display: grid;
+    place-items: center;
+    color: var(--color-gray-400);
+}
+
+.cms-layout-picker-text {
+    display: grid;
+    gap: 0.125rem;
+    min-width: 0;
+    padding-inline: 0.25rem;
+}
+
+.cms-layout-picker-name {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-gray-950);
+}
+
+.dark .cms-layout-picker-name {
+    color: #fff;
+}
+
+.cms-layout-picker-description {
+    font-size: 0.8125rem;
+    color: var(--color-gray-500);
+}
+
+.cms-layout-picker-default {
+    padding: 0 0.375rem;
+    border-radius: 9999px;
+    background: color-mix(in oklch, var(--color-primary-500) 15%, transparent);
+    color: var(--color-primary-600);
+    font-size: 0.6875rem;
+    font-weight: 600;
+}
+
+.dark .cms-layout-picker-default {
+    color: var(--color-primary-300);
+}
+
+.cms-layout-picker-chosen-wrp {
+    display: grid;
+    justify-items: start;
+    gap: 0.625rem;
+}
+
+.cms-layout-picker-chosen {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    width: 100%;
+    padding: 0.625rem 0.75rem;
+    border: 1px solid color-mix(in oklch, var(--color-gray-500) 22%, transparent);
+    border-radius: 1rem;
+    background: color-mix(in oklch, var(--color-gray-500) 4%, transparent);
+}
+
+.dark .cms-layout-picker-chosen {
+    background: rgb(0 0 0 / 0.18);
+}
+
+.cms-layout-picker-chosen-icon {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-primary-500);
+}
+
+.cms-layout-picker-name-icon {
+    flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
+    color: var(--color-primary-500);
+}
