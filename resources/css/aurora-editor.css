@@ -282,7 +282,7 @@
 
 .fpb .fpb-canvas {
     border: 0;
-    border-radius: 1.25rem;
+    border-radius: 0;
     box-shadow:
         0 0 0 1px var(--aurora-hairline),
         0 30px 80px -30px rgb(49 21 120 / 0.35),
