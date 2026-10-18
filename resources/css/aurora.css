@@ -2494,3 +2494,50 @@ html:has(.fpb) {
     border-radius: 0.5rem;
     border: 1px solid color-mix(in oklch, var(--color-gray-500) 22%, transparent);
 }
+
+/* A menu row sizes itself to its name and address, which pushes the edit and
+   delete buttons past the edge of a narrow screen. Let the text shrink so the
+   row stays inside the page. */
+.fi-fo-repeater-items:has(.fi-menu-builder-item-label),
+.fi-fo-repeater-item:has(.fi-menu-builder-item-label),
+.fi-fo-repeater-item-header:has(.fi-menu-builder-item-label) {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.fi-menu-builder-item-label,
+.fi-menu-builder-item-url {
+    min-width: 0;
+}
+
+/* On a phone, the drag controls, name, address and buttons cannot share one
+   line. The name keeps the first line; the address and buttons share the next. */
+@media (max-width: 40rem) {
+    .fi-fo-repeater-item-header:has(.fi-menu-builder-item-label) {
+        flex-wrap: wrap;
+        row-gap: 0.25rem;
+    }
+
+    .fi-fo-repeater-item-header:has(.fi-menu-builder-item-label)::after {
+        content: "";
+        flex-basis: 100%;
+        width: 0;
+        height: 0;
+        order: 1;
+    }
+
+    .fi-fo-repeater-item-header:has(.fi-menu-builder-item-label) .fi-menu-builder-item-label {
+        flex: 1 1 0%;
+    }
+
+    .fi-fo-repeater-item-header:has(.fi-menu-builder-item-label) .fi-menu-builder-item-url {
+        flex: 1 1 0%;
+        order: 2;
+    }
+
+    .fi-fo-repeater-item-header:has(.fi-menu-builder-item-label) .fi-fo-repeater-item-header-end-actions {
+        flex: none;
+        order: 2;
+        margin-inline-start: 0;
+    }
+}
