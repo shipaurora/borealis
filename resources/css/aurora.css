@@ -2541,3 +2541,250 @@ html:has(.fpb) {
         margin-inline-start: 0;
     }
 }
+
+/* Someone else is editing the page (Aurora\Livewire\EditLock): who, since when, and Take over. */
+.cms-edit-lock {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 0.875rem 0.75rem 1rem;
+    border: 1px solid color-mix(in oklch, var(--color-warning-500) 45%, transparent);
+    border-radius: 1rem;
+    background: color-mix(in oklch, var(--color-warning-500) 10%, transparent);
+    font-size: 0.875rem;
+}
+
+.cms-edit-lock-avatar,
+.cms-edit-lock-icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+}
+
+.cms-edit-lock-icon {
+    padding: 0.375rem;
+    color: var(--color-warning-600);
+}
+
+.cms-edit-lock-text {
+    display: grid;
+    flex: 1;
+    min-width: 0;
+    color: var(--color-gray-600);
+}
+
+.cms-edit-lock-text strong {
+    color: var(--color-gray-950);
+}
+
+.dark .cms-edit-lock-text {
+    color: var(--color-gray-400);
+}
+
+.dark .cms-edit-lock-text strong {
+    color: #fff;
+}
+
+/* On the canvas: floating over it, under the editor's bar. */
+.fpb .cms-edit-lock {
+    position: fixed;
+    top: 4.75rem;
+    left: 50%;
+    z-index: 40;
+    width: min(36rem, calc(100vw - 2rem));
+    margin: 0;
+    transform: translateX(-50%);
+    background: var(--color-white, #fff);
+    box-shadow: 0 18px 40px -12px rgb(0 0 0 / 0.35);
+}
+
+.dark .fpb .cms-edit-lock {
+    background: var(--color-gray-900);
+}
+
+/* Settings › Integrations › Content API: its addresses, one per row. */
+.cms-api-endpoints dl {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.cms-api-endpoints dl > div {
+    display: grid;
+    grid-template-columns: minmax(12rem, auto) 1fr;
+    gap: 1rem;
+    font-size: 0.875rem;
+}
+
+.cms-api-endpoints code {
+    font-family: var(--aurora-mono);
+    font-size: 0.8125rem;
+    color: var(--color-primary-600);
+}
+
+.dark .cms-api-endpoints code {
+    color: var(--color-primary-300);
+}
+
+.cms-api-endpoints dd {
+    color: var(--color-gray-500);
+}
+
+/* A file's focal point: the image, with a dot where cropped sizes keep its subject. */
+.cms-focal-point-image {
+    position: relative;
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+    cursor: crosshair;
+}
+
+.cms-focal-point-image img {
+    display: block;
+    max-height: 22rem;
+    width: auto;
+    border-radius: 0.75rem;
+}
+
+.cms-focal-point-dot {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 3px solid #fff;
+    border-radius: 9999px;
+    background: color-mix(in oklch, var(--color-primary-500) 70%, transparent);
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.35), 0 4px 12px rgb(0 0 0 / 0.35);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.cms-focal-point-hint {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--color-gray-500);
+    text-align: center;
+}
+
+.cms-focal-point-reset {
+    margin-inline-start: 0.375rem;
+    color: var(--color-primary-600);
+    font-weight: 500;
+}
+
+/* SEO checks (Aurora\Support\SeoChecks): on a page's Search engines tab and in the report. */
+.cms-seo-ok {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-success-600);
+}
+
+.cms-seo-issues {
+    display: grid;
+    gap: 0.375rem;
+}
+
+.cms-seo-issue {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-gray-700);
+}
+
+.dark .cms-seo-issue {
+    color: var(--color-gray-300);
+}
+
+.cms-seo-issue-danger > .fi-icon {
+    color: var(--color-danger-500);
+}
+
+.cms-seo-issue-warning > .fi-icon {
+    color: var(--color-warning-500);
+}
+
+.cms-seo-issue-info > .fi-icon {
+    color: var(--color-gray-400);
+}
+
+.cms-seo-report {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.cms-seo-report-row {
+    display: grid;
+    grid-template-columns: minmax(12rem, 1fr) 2fr;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid color-mix(in oklch, var(--color-gray-500) 22%, transparent);
+    border-radius: 1rem;
+    transition: border-color 150ms;
+}
+
+.cms-seo-report-row:hover {
+    border-color: var(--color-primary-500);
+}
+
+.cms-seo-report-page {
+    display: grid;
+    min-width: 0;
+    font-size: 0.875rem;
+}
+
+.cms-seo-report-page span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--color-gray-500);
+}
+
+@media (max-width: 640px) {
+    .cms-seo-report-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Settings › System › System info: one row per thing the CMS runs on. */
+.cms-system-info {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.cms-system-info > div {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid color-mix(in oklch, var(--color-gray-500) 15%, transparent);
+    font-size: 0.875rem;
+}
+
+.cms-system-info dt {
+    color: var(--color-gray-500);
+}
+
+.cms-system-info code {
+    font-family: var(--aurora-mono);
+}
+
+.cms-system-info dd span {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin-top: 0.25rem;
+    color: var(--color-warning-600);
+}
+
+/* Settings › Appearance: a theme's picture fills its card's thumbnail. */
+.cms-theme-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
+}
