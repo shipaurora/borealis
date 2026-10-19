@@ -2,7 +2,7 @@
     "name": "aurora/aurora",
     "description": "Aurora CMS's admin panel theme: its styles, design tokens and prebuilt Filament theme.",
     "type": "library",
-    "license": "proprietary",
+    "license": "MIT",
     "require": {
         "php": "^8.3",
         "filament/filament": "^5.10"
