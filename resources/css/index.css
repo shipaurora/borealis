@@ -1,12 +1,12 @@
 /*
- * Aurora's admin styles (aurora/aurora): its look, over the CMS's components. Its prebuilt
- * theme (theme.css) is made from this.
+ * Borealis, Aurora's default admin theme (aurora/borealis): its look, over the CMS's
+ * components. Its prebuilt theme (theme.css) is made from this.
  */
-@import './aurora.css';
+@import './borealis.css';
 
-@import './aurora-editor.css';
+@import './editor.css';
 
-@import './aurora-media.css';
+@import './media.css';
 
 .cms-search-thumb-icon {
     display: grid;

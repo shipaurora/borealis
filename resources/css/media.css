@@ -1,5 +1,5 @@
 /*
- * "Aurora" for the media library and the image picker: folders as glass tiles with a
+ * "Borealis" for the media library and the image picker: folders as glass tiles with a
  * neon folder chip, image cards that lift and glow, and the upload panel as glass.
  * Hooks are the cms-* classes in resources/views/filament/assets and the picker views.
  * The drag-and-drop highlights use !important utilities and keep winning over these.
@@ -11,77 +11,77 @@
     border-radius: 1.125rem;
     padding: 0.875rem;
     background:
-        linear-gradient(var(--aurora-card-solid), var(--aurora-card-solid)) padding-box,
-        var(--aurora-edge) border-box;
-    box-shadow: var(--aurora-shadow);
+        linear-gradient(var(--borealis-card-solid), var(--borealis-card-solid)) padding-box,
+        var(--borealis-edge) border-box;
+    box-shadow: var(--borealis-shadow);
     transition: transform 180ms, box-shadow 180ms;
 }
 
 .dark .cms-folder-tile {
     background:
-        linear-gradient(var(--aurora-card), var(--aurora-card)) padding-box,
-        var(--aurora-edge) border-box;
+        linear-gradient(var(--borealis-card), var(--borealis-card)) padding-box,
+        var(--borealis-edge) border-box;
 }
 
 .cms-folder-icon {
     border-radius: 0.75rem;
     color: #fff;
-    background: linear-gradient(135deg, var(--primary-600), color-mix(in oklch, var(--primary-500) 60%, var(--aurora-cyan)));
+    background: linear-gradient(135deg, var(--primary-600), color-mix(in oklch, var(--primary-500) 60%, var(--borealis-cyan)));
     box-shadow: 0 8px 18px -8px color-mix(in oklch, var(--primary-600) 90%, transparent), inset 0 1px 0 rgb(255 255 255 / 0.25);
 }
 
 .cms-folder-tile .font-semibold {
-    font-family: var(--aurora-display);
+    font-family: var(--borealis-display);
     letter-spacing: -0.01em;
 }
 
 .cms-segment {
     border-radius: 9999px;
     padding: 0.2rem;
-    background: color-mix(in oklch, var(--aurora-card-solid) 65%, transparent);
+    background: color-mix(in oklch, var(--borealis-card-solid) 65%, transparent);
     backdrop-filter: blur(12px);
-    box-shadow: var(--aurora-shadow), inset 0 0 0 1px var(--aurora-hairline);
+    box-shadow: var(--borealis-shadow), inset 0 0 0 1px var(--borealis-hairline);
     --tw-ring-shadow: 0 0 #0000;
 }
 
 .cms-segment > button[aria-pressed='true'] {
-    background: var(--aurora-ink);
-    color: var(--aurora-cyan);
+    background: var(--borealis-ink);
+    color: var(--borealis-cyan);
     box-shadow: 0 6px 14px -6px color-mix(in oklch, var(--primary-600) 80%, transparent);
 }
 
 .fi-ta-record.cms-asset-record:hover {
     transform: translateY(-3px);
     background:
-        linear-gradient(var(--aurora-card-solid), var(--aurora-card-solid)) padding-box,
-        var(--aurora-edge) border-box;
+        linear-gradient(var(--borealis-card-solid), var(--borealis-card-solid)) padding-box,
+        var(--borealis-edge) border-box;
     box-shadow: 0 22px 46px -22px color-mix(in oklch, var(--primary-600) 60%, transparent);
 }
 
 .dark .fi-ta-record.cms-asset-record:hover {
     background:
-        linear-gradient(var(--aurora-card), var(--aurora-card)) padding-box,
-        var(--aurora-edge) border-box;
+        linear-gradient(var(--borealis-card), var(--borealis-card)) padding-box,
+        var(--borealis-edge) border-box;
 }
 
 .fi-ta-record.cms-asset-record.fi-selected {
     background:
-        linear-gradient(var(--aurora-card-solid), var(--aurora-card-solid)) padding-box,
-        linear-gradient(140deg, var(--primary-500), var(--aurora-cyan)) border-box;
+        linear-gradient(var(--borealis-card-solid), var(--borealis-card-solid)) padding-box,
+        linear-gradient(140deg, var(--primary-500), var(--borealis-cyan)) border-box;
     box-shadow: 0 0 0 3px color-mix(in oklch, var(--primary-500) 18%, transparent), 0 18px 40px -20px color-mix(in oklch, var(--primary-600) 60%, transparent);
 }
 
 /* ── Upload panel ─────────────────────────────────────────────────────── */
 .cms-upload-panel {
     border-radius: 1.25rem;
-    background: color-mix(in oklch, var(--aurora-card-solid) 88%, transparent);
+    background: color-mix(in oklch, var(--borealis-card-solid) 88%, transparent);
     backdrop-filter: blur(18px) saturate(1.5);
-    box-shadow: var(--aurora-shadow-lifted), inset 0 0 0 1px var(--aurora-hairline);
+    box-shadow: var(--borealis-shadow-lifted), inset 0 0 0 1px var(--borealis-hairline);
     --tw-ring-shadow: 0 0 #0000;
 }
 
 .cms-upload-panel .bg-primary-600 {
-    background: linear-gradient(90deg, var(--primary-600), var(--aurora-cyan));
+    background: linear-gradient(90deg, var(--primary-600), var(--borealis-cyan));
     box-shadow: 0 0 10px color-mix(in oklch, var(--primary-500) 60%, transparent);
 }
 
@@ -89,8 +89,8 @@
 .cms-file-tile {
     background:
         radial-gradient(circle at 30% 20%, color-mix(in oklch, var(--primary-500) 14%, transparent), transparent 70%),
-        color-mix(in oklch, var(--aurora-card-solid) 85%, var(--primary-500));
-    box-shadow: inset 0 0 0 1px var(--aurora-hairline);
+        color-mix(in oklch, var(--borealis-card-solid) 85%, var(--primary-500));
+    box-shadow: inset 0 0 0 1px var(--borealis-hairline);
 }
 
 /* Rows like the sidebar's items, indented by depth. */
@@ -105,38 +105,38 @@
     font-size: 0.875rem;
     font-weight: 500;
     text-align: start;
-    color: var(--aurora-rail-text);
+    color: var(--borealis-rail-text);
     transition: background-color 160ms, box-shadow 160ms, color 160ms;
 }
 
 .cms-folder-tree-item:hover {
-    background: var(--aurora-rail-hover);
-    color: var(--aurora-rail-strong);
+    background: var(--borealis-rail-hover);
+    color: var(--borealis-rail-strong);
 }
 
 .cms-folder-tree-active,
 .cms-folder-tree-active:hover {
-    background: var(--aurora-rail-active-bg);
-    box-shadow: var(--aurora-rail-active-shadow);
-    color: var(--aurora-rail-active-text);
+    background: var(--borealis-rail-active-bg);
+    box-shadow: var(--borealis-rail-active-shadow);
+    color: var(--borealis-rail-active-text);
     font-weight: 600;
 }
 
 .cms-folder-tree-active .cms-folder-tree-icon {
-    color: var(--aurora-rail-active-icon);
+    color: var(--borealis-rail-active-icon);
 }
 
 .cms-folder-tree-count {
     flex-shrink: 0;
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.7rem;
     color: var(--gray-400);
 }
 
 .cms-folder-tree-toggle:hover {
-    color: var(--aurora-rail-strong);
+    color: var(--borealis-rail-strong);
 }
 
 li:has(> div > .cms-folder-tree-active) .cms-folder-tree-toggle {
-    color: var(--aurora-rail-active-text);
+    color: var(--borealis-rail-active-text);
 }

@@ -1,5 +1,5 @@
 /*
- * "Aurora": the admin panel's look. Filament's layout, restyled as a futuristic
+ * "Borealis": the admin panel's look. Filament's layout, restyled as a futuristic
  * control surface: a dark command rail floating beside the content, a floating glass
  * top bar, a faint tech grid under northern-lights glows, glass cards with glowing
  * edges, Space Grotesk headings with mono captions, and neon pill actions.
@@ -9,90 +9,90 @@
  * fi-* classes, so the app's own views (canvas, media library, blocks) are untouched.
  */
 :root {
-    --aurora-cyan: #22d3ee;
-    --aurora-pink: #e879f9;
-    --aurora-display: 'Space Grotesk', var(--font-family), ui-sans-serif, system-ui, sans-serif;
-    --aurora-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --borealis-cyan: #22d3ee;
+    --borealis-pink: #e879f9;
+    --borealis-display: 'Space Grotesk', var(--font-family), ui-sans-serif, system-ui, sans-serif;
+    --borealis-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-    --aurora-bg: #f3f3f8;
-    --aurora-grid: rgb(76 29 149 / 0.055);
-    --aurora-card: rgb(255 255 255 / 0.82);
-    --aurora-card-solid: #ffffff;
-    --aurora-field: rgb(255 255 255 / 0.9);
-    --aurora-hairline: rgb(15 23 42 / 0.07);
-    --aurora-edge: linear-gradient(140deg,
+    --borealis-bg: #f3f3f8;
+    --borealis-grid: rgb(76 29 149 / 0.055);
+    --borealis-card: rgb(255 255 255 / 0.82);
+    --borealis-card-solid: #ffffff;
+    --borealis-field: rgb(255 255 255 / 0.9);
+    --borealis-hairline: rgb(15 23 42 / 0.07);
+    --borealis-edge: linear-gradient(140deg,
             color-mix(in oklch, var(--primary-500) 45%, transparent),
             rgb(15 23 42 / 0.07) 32%,
             rgb(15 23 42 / 0.05) 68%,
-            color-mix(in oklch, var(--aurora-cyan) 45%, transparent));
-    --aurora-shadow:
+            color-mix(in oklch, var(--borealis-cyan) 45%, transparent));
+    --borealis-shadow:
         0 1px 1px rgb(15 23 42 / 0.03),
         0 12px 32px -14px rgb(49 21 120 / 0.22);
-    --aurora-shadow-lifted:
+    --borealis-shadow-lifted:
         0 2px 4px rgb(15 23 42 / 0.05),
         0 30px 70px -24px rgb(49 21 120 / 0.38);
 
     /* Dark ink for small accent pills (active tab, layout switch), in both modes. */
-    --aurora-ink: #0d0b1f;
+    --borealis-ink: #0d0b1f;
 
     /* The command rail (sidebar, editor palette): light glass here, dark in dark mode. */
     /* The rail is glass like the top bar: same tint, blur, hairline and shadow. */
-    --aurora-glass: color-mix(in oklch, var(--aurora-card-solid) 58%, transparent);
-    --aurora-glass-shadow: var(--aurora-shadow), inset 0 0 0 1px var(--aurora-hairline), inset 0 1px 0 rgb(255 255 255 / 0.5);
-    --aurora-rail-bg: color-mix(in oklch, var(--aurora-card-solid) 82%, transparent);
-    --aurora-rail-shadow: var(--aurora-glass-shadow);
-    --aurora-rail-text: var(--gray-700);
-    --aurora-rail-strong: var(--gray-950);
-    --aurora-rail-muted: var(--gray-400);
-    --aurora-rail-hover: rgb(15 23 42 / 0.045);
-    --aurora-rail-line: rgb(15 23 42 / 0.08);
-    --aurora-rail-tile: rgb(255 255 255 / 0.7);
+    --borealis-glass: color-mix(in oklch, var(--borealis-card-solid) 58%, transparent);
+    --borealis-glass-shadow: var(--borealis-shadow), inset 0 0 0 1px var(--borealis-hairline), inset 0 1px 0 rgb(255 255 255 / 0.5);
+    --borealis-rail-bg: color-mix(in oklch, var(--borealis-card-solid) 82%, transparent);
+    --borealis-rail-shadow: var(--borealis-glass-shadow);
+    --borealis-rail-text: var(--gray-700);
+    --borealis-rail-strong: var(--gray-950);
+    --borealis-rail-muted: var(--gray-400);
+    --borealis-rail-hover: rgb(15 23 42 / 0.045);
+    --borealis-rail-line: rgb(15 23 42 / 0.08);
+    --borealis-rail-tile: rgb(255 255 255 / 0.7);
     /* The current page: a solid violet pill with white text, in both modes. */
-    --aurora-rail-active-bg: linear-gradient(135deg, var(--primary-700), var(--primary-600) 45%, color-mix(in oklch, var(--primary-500) 88%, var(--aurora-cyan)));
-    --aurora-rail-active-shadow:
+    --borealis-rail-active-bg: linear-gradient(135deg, var(--primary-700), var(--primary-600) 45%, color-mix(in oklch, var(--primary-500) 88%, var(--borealis-cyan)));
+    --borealis-rail-active-shadow:
         inset 0 1px 0 rgb(255 255 255 / 0.22),
         0 1px 2px color-mix(in oklch, var(--primary-700) 40%, transparent),
         0 6px 14px -6px color-mix(in oklch, var(--primary-600) 75%, transparent);
-    --aurora-rail-active-text: #fff;
-    --aurora-rail-active-icon: #fff;
+    --borealis-rail-active-text: #fff;
+    --borealis-rail-active-icon: #fff;
 }
 
 .dark {
-    --aurora-bg: #06060c;
-    --aurora-grid: rgb(255 255 255 / 0.035);
-    --aurora-card: rgb(20 18 38 / 0.82);
-    --aurora-card-solid: #12101f;
-    --aurora-field: rgb(255 255 255 / 0.04);
-    --aurora-hairline: rgb(255 255 255 / 0.08);
-    --aurora-edge: linear-gradient(140deg,
+    --borealis-bg: #06060c;
+    --borealis-grid: rgb(255 255 255 / 0.035);
+    --borealis-card: rgb(20 18 38 / 0.82);
+    --borealis-card-solid: #12101f;
+    --borealis-field: rgb(255 255 255 / 0.04);
+    --borealis-hairline: rgb(255 255 255 / 0.08);
+    --borealis-edge: linear-gradient(140deg,
             color-mix(in oklch, var(--primary-400) 50%, transparent),
             rgb(255 255 255 / 0.07) 32%,
             rgb(255 255 255 / 0.05) 68%,
-            color-mix(in oklch, var(--aurora-cyan) 40%, transparent));
-    --aurora-shadow:
+            color-mix(in oklch, var(--borealis-cyan) 40%, transparent));
+    --borealis-shadow:
         0 1px 1px rgb(0 0 0 / 0.4),
         0 16px 40px -16px rgb(0 0 0 / 0.8);
-    --aurora-shadow-lifted:
+    --borealis-shadow-lifted:
         0 2px 4px rgb(0 0 0 / 0.5),
         0 30px 80px -20px rgb(0 0 0 / 0.9);
-    --aurora-glass-shadow: var(--aurora-shadow), inset 0 0 0 1px var(--aurora-hairline), inset 0 1px 0 rgb(255 255 255 / 0.05);
-    --aurora-rail-text: rgb(226 232 240 / 0.78);
-    --aurora-rail-strong: #fff;
-    --aurora-rail-muted: rgb(148 163 184 / 0.7);
-    --aurora-rail-hover: rgb(255 255 255 / 0.06);
-    --aurora-rail-line: rgb(255 255 255 / 0.1);
-    --aurora-rail-tile: rgb(255 255 255 / 0.035);
+    --borealis-glass-shadow: var(--borealis-shadow), inset 0 0 0 1px var(--borealis-hairline), inset 0 1px 0 rgb(255 255 255 / 0.05);
+    --borealis-rail-text: rgb(226 232 240 / 0.78);
+    --borealis-rail-strong: #fff;
+    --borealis-rail-muted: rgb(148 163 184 / 0.7);
+    --borealis-rail-hover: rgb(255 255 255 / 0.06);
+    --borealis-rail-line: rgb(255 255 255 / 0.1);
+    --borealis-rail-tile: rgb(255 255 255 / 0.035);
 }
 
 /* ── Canvas: a tech grid under the aurora ─────────────────────────────── */
 .fi-body {
-    background-color: var(--aurora-bg);
+    background-color: var(--borealis-bg);
     background-image:
         radial-gradient(56rem 26rem at 18% -6%, color-mix(in oklch, var(--primary-400) 26%, transparent), transparent 70%),
-        radial-gradient(44rem 22rem at 96% 2%, color-mix(in oklch, var(--aurora-cyan) 20%, transparent), transparent 70%),
-        radial-gradient(40rem 26rem at 55% 112%, color-mix(in oklch, var(--aurora-pink) 12%, transparent), transparent 70%),
-        linear-gradient(var(--aurora-grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--aurora-grid) 1px, transparent 1px);
+        radial-gradient(44rem 22rem at 96% 2%, color-mix(in oklch, var(--borealis-cyan) 20%, transparent), transparent 70%),
+        radial-gradient(40rem 26rem at 55% 112%, color-mix(in oklch, var(--borealis-pink) 12%, transparent), transparent 70%),
+        linear-gradient(var(--borealis-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--borealis-grid) 1px, transparent 1px);
     background-size: auto, auto, auto, 32px 32px, 32px 32px;
     background-attachment: fixed;
 }
@@ -100,10 +100,10 @@
 .dark .fi-body {
     background-image:
         radial-gradient(56rem 26rem at 18% -6%, color-mix(in oklch, var(--primary-600) 34%, transparent), transparent 70%),
-        radial-gradient(44rem 22rem at 96% 2%, color-mix(in oklch, var(--aurora-cyan) 16%, transparent), transparent 70%),
-        radial-gradient(40rem 26rem at 55% 112%, color-mix(in oklch, var(--aurora-pink) 10%, transparent), transparent 70%),
-        linear-gradient(var(--aurora-grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--aurora-grid) 1px, transparent 1px);
+        radial-gradient(44rem 22rem at 96% 2%, color-mix(in oklch, var(--borealis-cyan) 16%, transparent), transparent 70%),
+        radial-gradient(40rem 26rem at 55% 112%, color-mix(in oklch, var(--borealis-pink) 10%, transparent), transparent 70%),
+        linear-gradient(var(--borealis-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--borealis-grid) 1px, transparent 1px);
 }
 
 /* ── Top bar: a floating glass capsule ────────────────────────────────── */
@@ -117,7 +117,7 @@
     min-height: calc(var(--topbar-height) - 0.75rem);
     border-radius: 1.25rem;
     background: transparent;
-    box-shadow: var(--aurora-glass-shadow);
+    box-shadow: var(--borealis-glass-shadow);
     --tw-ring-shadow: 0 0 #0000;
 }
 
@@ -133,16 +133,16 @@
     inset: 0;
     z-index: -1;
     border-radius: inherit;
-    background: var(--aurora-glass);
+    background: var(--borealis-glass);
     /* The bar's edge, as on the sidebar rail: on this layer, which would cover an inset shadow on the bar. */
-    box-shadow: inset 0 0 0 1px var(--aurora-hairline);
+    box-shadow: inset 0 0 0 1px var(--borealis-hairline);
     -webkit-backdrop-filter: saturate(1.8) blur(20px);
     backdrop-filter: saturate(1.8) blur(20px);
     pointer-events: none;
 }
 
 .fi-logo {
-    font-family: var(--aurora-display);
+    font-family: var(--borealis-display);
     font-weight: 700;
     letter-spacing: -0.03em;
 }
@@ -155,7 +155,7 @@
 
 .fi-user-menu .fi-avatar,
 .fi-topbar .fi-avatar {
-    box-shadow: 0 0 0 2px var(--aurora-card-solid), 0 0 0 3.5px var(--primary-500), 0 0 14px color-mix(in oklch, var(--primary-500) 60%, transparent);
+    box-shadow: 0 0 0 2px var(--borealis-card-solid), 0 0 0 3.5px var(--primary-500), 0 0 14px color-mix(in oklch, var(--primary-500) 60%, transparent);
 }
 
 /* ── Sidebar: the command rail ───────────────────────────────────────── */
@@ -164,12 +164,12 @@
 .fi-sidebar-nav > .fi-tenant-menu {
     margin: 0 0 0.25rem;
     padding-bottom: 0.875rem;
-    border-bottom: 1px solid var(--aurora-rail-line);
+    border-bottom: 1px solid var(--borealis-rail-line);
 }
 
 .fi-tenant-menu-trigger:hover,
 .fi-tenant-menu-trigger:focus-visible {
-    background: var(--aurora-rail-hover);
+    background: var(--borealis-rail-hover);
 }
 
 .fi-tenant-menu-trigger .fi-tenant-avatar {
@@ -180,47 +180,47 @@
 }
 
 .fi-tenant-menu-trigger-current-tenant-label {
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.65rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--aurora-rail-muted);
+    color: var(--borealis-rail-muted);
 }
 
 .fi-tenant-menu-trigger-tenant-name {
     font-weight: 600;
-    color: var(--aurora-rail-strong);
+    color: var(--borealis-rail-strong);
 }
 
 .fi-sidebar-nav {
     margin: 0.75rem;
     padding: 1.25rem 0.75rem;
     border-radius: 1.25rem;
-    background: var(--aurora-rail-bg);
-    box-shadow: var(--aurora-rail-shadow);
+    background: var(--borealis-rail-bg);
+    box-shadow: var(--borealis-rail-shadow);
     /* Filament keeps room for a scrollbar, which left the items off-centre; take it only when scrolling. */
     scrollbar-gutter: auto;
     scrollbar-width: thin;
-    scrollbar-color: var(--aurora-rail-line) transparent;
+    scrollbar-color: var(--borealis-rail-line) transparent;
 }
 
 .fi-sidebar-group-label {
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.65rem;
     font-weight: 500;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--aurora-rail-muted);
+    color: var(--borealis-rail-muted);
 }
 
 .fi-sidebar-group-btn .fi-icon,
 .fi-sidebar-group-collapse-btn,
 .fi-sidebar-group-dropdown-trigger-btn .fi-icon {
-    color: var(--aurora-rail-muted);
+    color: var(--borealis-rail-muted);
 }
 
 .fi-sidebar-group-dropdown-trigger-btn:hover {
-    background: var(--aurora-rail-hover);
+    background: var(--borealis-rail-hover);
 }
 
 .fi-sidebar-item-btn {
@@ -230,43 +230,43 @@
 }
 
 .fi-sidebar-item-btn > .fi-icon {
-    color: var(--aurora-rail-muted);
+    color: var(--borealis-rail-muted);
     transition: color 160ms, filter 160ms;
 }
 
 .fi-sidebar-item-label {
-    color: var(--aurora-rail-text);
+    color: var(--borealis-rail-text);
 }
 
 .fi-sidebar-item-has-url:not(.fi-active) > .fi-sidebar-item-btn:hover {
-    background: var(--aurora-rail-hover);
+    background: var(--borealis-rail-hover);
 }
 
 .fi-sidebar-item-has-url:not(.fi-active) > .fi-sidebar-item-btn:hover > .fi-icon,
 .fi-sidebar-item-has-url:not(.fi-active) > .fi-sidebar-item-btn:hover > .fi-sidebar-item-label {
-    color: var(--aurora-rail-strong);
+    color: var(--borealis-rail-strong);
 }
 
 .fi-sidebar-item.fi-active > .fi-sidebar-item-btn,
 .fi-sidebar-group.fi-active > .fi-sidebar-group-dropdown-trigger-btn {
-    background: var(--aurora-rail-active-bg);
-    box-shadow: var(--aurora-rail-active-shadow);
+    background: var(--borealis-rail-active-bg);
+    box-shadow: var(--borealis-rail-active-shadow);
 }
 
 .fi-sidebar-item.fi-active > .fi-sidebar-item-btn > .fi-sidebar-item-label {
-    color: var(--aurora-rail-active-text);
+    color: var(--borealis-rail-active-text);
     font-weight: 600;
 }
 
 .fi-sidebar-item.fi-active > .fi-sidebar-item-btn > .fi-icon,
 .fi-sidebar-group.fi-active > .fi-sidebar-group-dropdown-trigger-btn .fi-icon {
-    color: var(--aurora-rail-active-icon);
+    color: var(--borealis-rail-active-icon);
 }
 
 .fi-sidebar-item-grouped-border-part,
 .fi-sidebar-item-grouped-border-part-not-first,
 .fi-sidebar-item-grouped-border-part-not-last {
-    background: var(--aurora-rail-line);
+    background: var(--borealis-rail-line);
 }
 
 /* Count badges (the sidebar's, tabs'): the same compact solid pill as the collapsed rail's
@@ -373,7 +373,7 @@
     font-variant-numeric: tabular-nums;
     background: var(--primary-600);
     color: #fff;
-    box-shadow: 0 0 0 2px var(--aurora-card-solid);
+    box-shadow: 0 0 0 2px var(--borealis-card-solid);
 }
 
 .cms-notifications-header {
@@ -382,11 +382,11 @@
     justify-content: space-between;
     gap: 0.75rem;
     padding: 0.875rem 1rem 0.75rem;
-    border-bottom: 1px solid var(--aurora-hairline);
+    border-bottom: 1px solid var(--borealis-hairline);
 }
 
 .cms-notifications-heading {
-    font-family: var(--aurora-display);
+    font-family: var(--borealis-display);
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--gray-950);
@@ -394,13 +394,13 @@
 
 .cms-notifications-footer {
     padding: 0.5rem 1rem;
-    border-top: 1px solid var(--aurora-hairline);
+    border-top: 1px solid var(--borealis-hairline);
 }
 
 /* Notifications in the list: rows with dividers, not floating toast cards. */
 .cms-notifications-list .fi-no-notification {
     border: 0;
-    border-bottom: 1px solid var(--aurora-hairline);
+    border-bottom: 1px solid var(--borealis-hairline);
     border-radius: 0;
     background: transparent;
     box-shadow: none;
@@ -408,13 +408,13 @@
 
 @media (max-width: 1023px) {
     .fi-sidebar.fi-sidebar-open {
-        background: var(--aurora-bg);
+        background: var(--borealis-bg);
     }
 }
 
 /* ── Page header ──────────────────────────────────────────────────────── */
 .fi-header-heading {
-    font-family: var(--aurora-display);
+    font-family: var(--borealis-display);
     font-weight: 600;
     letter-spacing: -0.04em;
     background: linear-gradient(95deg, var(--gray-950) 30%, var(--primary-700) 110%);
@@ -428,7 +428,7 @@
 }
 
 .fi-breadcrumbs-item-label {
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.7rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -443,9 +443,9 @@
     border: 1px solid transparent;
     border-radius: 1.5rem;
     background:
-        linear-gradient(var(--aurora-card-solid), var(--aurora-card-solid)) padding-box,
-        var(--aurora-edge) border-box;
-    box-shadow: var(--aurora-shadow);
+        linear-gradient(var(--borealis-card-solid), var(--borealis-card-solid)) padding-box,
+        var(--borealis-edge) border-box;
+    box-shadow: var(--borealis-shadow);
     --tw-ring-shadow: 0 0 #0000;
 }
 
@@ -455,12 +455,12 @@
 .dark .fi-fo-repeater-item,
 .dark .fi-in-repeatable-item {
     background:
-        linear-gradient(var(--aurora-card), var(--aurora-card)) padding-box,
-        var(--aurora-edge) border-box;
+        linear-gradient(var(--borealis-card), var(--borealis-card)) padding-box,
+        var(--borealis-edge) border-box;
 }
 
 .fi-section-header-heading {
-    font-family: var(--aurora-display);
+    font-family: var(--borealis-display);
     font-weight: 600;
     letter-spacing: -0.02em;
 }
@@ -472,7 +472,7 @@
     margin-top: -0.15rem;
     border-radius: 0.75rem;
     color: #fff;
-    background: linear-gradient(135deg, var(--primary-600), color-mix(in oklch, var(--primary-500) 60%, var(--aurora-cyan)));
+    background: linear-gradient(135deg, var(--primary-600), color-mix(in oklch, var(--primary-500) 60%, var(--borealis-cyan)));
     box-shadow: 0 6px 16px -6px color-mix(in oklch, var(--primary-600) 90%, transparent), inset 0 1px 0 rgb(255 255 255 / 0.25);
 }
 
@@ -486,19 +486,19 @@
     padding: 0.45rem;
     border-radius: 0.75rem;
     color: #fff;
-    background: linear-gradient(135deg, var(--primary-600), color-mix(in oklch, var(--primary-500) 60%, var(--aurora-cyan)));
+    background: linear-gradient(135deg, var(--primary-600), color-mix(in oklch, var(--primary-500) 60%, var(--borealis-cyan)));
     box-shadow: 0 6px 16px -6px color-mix(in oklch, var(--primary-600) 90%, transparent), inset 0 1px 0 rgb(255 255 255 / 0.25);
 }
 
 .fi-wi-stats-overview-stat-label {
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.7rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
 }
 
 .fi-wi-stats-overview-stat-value {
-    font-family: var(--aurora-display);
+    font-family: var(--borealis-display);
     font-weight: 600;
     letter-spacing: -0.04em;
     background: linear-gradient(95deg, var(--gray-950), var(--primary-600));
@@ -522,7 +522,7 @@
 }
 
 .fi-btn.fi-color-primary:not(.fi-outlined):not(label):not([aria-pressed]) {
-    background-image: linear-gradient(110deg, var(--primary-700) 0%, var(--primary-500) 38%, #c026d3 62%, var(--primary-500) 82%, var(--aurora-cyan) 120%);
+    background-image: linear-gradient(110deg, var(--primary-700) 0%, var(--primary-500) 38%, #c026d3 62%, var(--primary-500) 82%, var(--borealis-cyan) 120%);
     background-size: 220% 100%;
     background-position: 0% 50%;
     color: #fff;
@@ -549,9 +549,9 @@
 
 /* Secondary buttons: glass chips. */
 .fi-btn:not(.fi-color):not(label):not([aria-pressed]) {
-    background: color-mix(in oklch, var(--aurora-card-solid) 75%, transparent);
+    background: color-mix(in oklch, var(--borealis-card-solid) 75%, transparent);
     backdrop-filter: blur(10px);
-    box-shadow: 0 1px 2px rgb(15 23 42 / 0.06), inset 0 0 0 1px var(--aurora-hairline);
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.06), inset 0 0 0 1px var(--borealis-hairline);
     --tw-ring-shadow: 0 0 #0000;
 }
 
@@ -566,7 +566,7 @@
 /* ── Form fields ──────────────────────────────────────────────────────── */
 .fi-input-wrp {
     border-radius: 0.875rem;
-    background: var(--aurora-field);
+    background: var(--borealis-field);
     transition: box-shadow 160ms;
 }
 
@@ -581,7 +581,7 @@
 /* ── Tables ───────────────────────────────────────────────────────────── */
 .fi-ta-header-cell-label,
 .fi-ta-header-cell {
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.68rem;
     font-weight: 500;
     letter-spacing: 0.12em;
@@ -599,8 +599,8 @@
     gap: 0.25rem;
     padding: 0.25rem;
     border-radius: 9999px;
-    background: color-mix(in oklch, var(--aurora-card-solid) 70%, transparent);
-    box-shadow: inset 0 0 0 1px var(--aurora-hairline);
+    background: color-mix(in oklch, var(--borealis-card-solid) 70%, transparent);
+    box-shadow: inset 0 0 0 1px var(--borealis-hairline);
     --tw-ring-shadow: 0 0 #0000;
 }
 
@@ -616,13 +616,13 @@
 
 /* Hover like the sidebar items; the current page stays the violet pill, hovered or not. */
 .fi-pagination .fi-pagination-item:not(.fi-active) .fi-pagination-item-btn:enabled:hover {
-    background: var(--aurora-rail-hover);
+    background: var(--borealis-rail-hover);
 }
 
 .fi-pagination .fi-pagination-item.fi-active .fi-pagination-item-btn,
 .fi-pagination .fi-pagination-item.fi-active .fi-pagination-item-btn:hover {
-    background: var(--aurora-rail-active-bg);
-    box-shadow: var(--aurora-rail-active-shadow);
+    background: var(--borealis-rail-active-bg);
+    box-shadow: var(--borealis-rail-active-shadow);
     cursor: default;
 }
 
@@ -639,8 +639,8 @@
 .fi-tabs:not(.fi-contained) {
     border-radius: 9999px;
     padding: 0.3rem;
-    background: color-mix(in oklch, var(--aurora-card-solid) 80%, transparent);
-    box-shadow: var(--aurora-shadow), inset 0 0 0 1px var(--aurora-hairline);
+    background: color-mix(in oklch, var(--borealis-card-solid) 80%, transparent);
+    box-shadow: var(--borealis-shadow), inset 0 0 0 1px var(--borealis-hairline);
     --tw-ring-shadow: 0 0 #0000;
 }
 
@@ -650,7 +650,7 @@
 }
 
 .fi-tabs-item.fi-active {
-    background: var(--aurora-ink);
+    background: var(--borealis-ink);
     box-shadow: 0 8px 20px -8px color-mix(in oklch, var(--primary-600) 70%, transparent), inset 0 0 0 1px rgb(255 255 255 / 0.08);
 }
 
@@ -659,7 +659,7 @@
 }
 
 .fi-tabs-item.fi-active .fi-icon {
-    color: var(--aurora-cyan);
+    color: var(--borealis-cyan);
 }
 
 .dark .fi-tabs-item.fi-active {
@@ -669,8 +669,8 @@
 
 .fi-dropdown-panel {
     border-radius: 1.125rem;
-    background: var(--aurora-card-solid);
-    box-shadow: var(--aurora-shadow-lifted), inset 0 0 0 1px var(--aurora-hairline);
+    background: var(--borealis-card-solid);
+    box-shadow: var(--borealis-shadow-lifted), inset 0 0 0 1px var(--borealis-hairline);
     --tw-ring-shadow: 0 0 #0000;
     overflow: hidden;
 }
@@ -688,9 +688,9 @@
     border: 1px solid transparent;
     border-radius: 1.75rem;
     background:
-        linear-gradient(var(--aurora-card-solid), var(--aurora-card-solid)) padding-box,
-        var(--aurora-edge) border-box;
-    box-shadow: var(--aurora-shadow-lifted);
+        linear-gradient(var(--borealis-card-solid), var(--borealis-card-solid)) padding-box,
+        var(--borealis-edge) border-box;
+    box-shadow: var(--borealis-shadow-lifted);
     --tw-ring-shadow: 0 0 #0000;
 }
 
@@ -701,7 +701,7 @@
 }
 
 .fi-modal-heading {
-    font-family: var(--aurora-display);
+    font-family: var(--borealis-display);
     font-weight: 600;
     letter-spacing: -0.03em;
 }
@@ -711,14 +711,14 @@
     border: 1px solid transparent;
     border-radius: 1.125rem;
     background:
-        linear-gradient(var(--aurora-card-solid), var(--aurora-card-solid)) padding-box,
-        var(--aurora-edge) border-box;
-    box-shadow: var(--aurora-shadow-lifted);
+        linear-gradient(var(--borealis-card-solid), var(--borealis-card-solid)) padding-box,
+        var(--borealis-edge) border-box;
+    box-shadow: var(--borealis-shadow-lifted);
     --tw-ring-shadow: 0 0 #0000;
 }
 
 .fi-no-notification .fi-no-notification-title {
-    font-family: var(--aurora-display);
+    font-family: var(--borealis-display);
     font-weight: 600;
 }
 
@@ -726,13 +726,13 @@
    buttons beside them; only the primary action is filled. Filament sets --color-* per colour. */
 .fi-btn:is(.fi-color-danger, .fi-color-success, .fi-color-warning, .fi-color-info):not(.fi-outlined):not(label):not([aria-pressed]) {
     color: var(--color-600);
-    background: color-mix(in oklch, var(--aurora-card-solid) 75%, transparent);
+    background: color-mix(in oklch, var(--borealis-card-solid) 75%, transparent);
     box-shadow: 0 1px 2px rgb(15 23 42 / 0.06), inset 0 0 0 1px color-mix(in oklch, var(--color-500) 30%, transparent);
     --tw-ring-shadow: 0 0 #0000;
 }
 
 .fi-btn:is(.fi-color-danger, .fi-color-success, .fi-color-warning, .fi-color-info):not(.fi-outlined):not(label):not([aria-pressed]):not(.fi-disabled):not([disabled]):hover {
-    background: color-mix(in oklch, var(--color-500) 14%, var(--aurora-card-solid));
+    background: color-mix(in oklch, var(--color-500) 14%, var(--borealis-card-solid));
     box-shadow: 0 1px 2px rgb(15 23 42 / 0.06), inset 0 0 0 1px color-mix(in oklch, var(--color-500) 50%, transparent);
 }
 
@@ -745,8 +745,8 @@
     background-color: #07061a;
     background-image:
         radial-gradient(70rem 40rem at 12% 0%, color-mix(in oklch, var(--primary-600) 60%, transparent), transparent 62%),
-        radial-gradient(55rem 35rem at 96% 12%, color-mix(in oklch, var(--aurora-cyan) 38%, transparent), transparent 62%),
-        radial-gradient(60rem 40rem at 50% 118%, color-mix(in oklch, var(--aurora-pink) 28%, transparent), transparent 62%),
+        radial-gradient(55rem 35rem at 96% 12%, color-mix(in oklch, var(--borealis-cyan) 38%, transparent), transparent 62%),
+        radial-gradient(60rem 40rem at 50% 118%, color-mix(in oklch, var(--borealis-pink) 28%, transparent), transparent 62%),
         linear-gradient(rgb(255 255 255 / 0.04) 1px, transparent 1px),
         linear-gradient(90deg, rgb(255 255 255 / 0.04) 1px, transparent 1px);
     background-size: auto, auto, auto, 40px 40px, 40px 40px;
@@ -757,7 +757,7 @@
     border-radius: 2rem;
     background:
         linear-gradient(rgb(255 255 255 / 0.985), rgb(255 255 255 / 0.985)) padding-box,
-        linear-gradient(140deg, color-mix(in oklch, var(--primary-400) 80%, transparent), rgb(255 255 255 / 0.4) 40%, color-mix(in oklch, var(--aurora-cyan) 70%, transparent)) border-box;
+        linear-gradient(140deg, color-mix(in oklch, var(--primary-400) 80%, transparent), rgb(255 255 255 / 0.4) 40%, color-mix(in oklch, var(--borealis-cyan) 70%, transparent)) border-box;
     box-shadow:
         0 40px 100px -30px rgb(0 0 0 / 0.7),
         0 0 80px -30px color-mix(in oklch, var(--primary-500) 70%, transparent);
@@ -767,7 +767,7 @@
 .dark .fi-simple-main {
     background:
         linear-gradient(rgb(16 14 32 / 0.92), rgb(16 14 32 / 0.92)) padding-box,
-        linear-gradient(140deg, color-mix(in oklch, var(--primary-400) 70%, transparent), rgb(255 255 255 / 0.08) 40%, color-mix(in oklch, var(--aurora-cyan) 60%, transparent)) border-box;
+        linear-gradient(140deg, color-mix(in oklch, var(--primary-400) 70%, transparent), rgb(255 255 255 / 0.08) 40%, color-mix(in oklch, var(--borealis-cyan) 60%, transparent)) border-box;
 }
 
 /* The frosted glass sits behind the card, not on it: a backdrop-filter on the card would make
@@ -788,7 +788,7 @@
 }
 
 .fi-simple-header-heading {
-    font-family: var(--aurora-display);
+    font-family: var(--borealis-display);
     font-weight: 600;
     letter-spacing: -0.04em;
 }
@@ -831,8 +831,8 @@
     border-radius: 0.875rem;
     background:
         radial-gradient(14rem 8rem at 0% 0%, color-mix(in oklch, var(--primary-500) 14%, transparent), transparent 70%),
-        radial-gradient(12rem 8rem at 100% 100%, color-mix(in oklch, var(--aurora-cyan) 12%, transparent), transparent 70%);
-    box-shadow: inset 0 0 0 1px var(--aurora-hairline);
+        radial-gradient(12rem 8rem at 100% 100%, color-mix(in oklch, var(--borealis-cyan) 12%, transparent), transparent 70%);
+    box-shadow: inset 0 0 0 1px var(--borealis-hairline);
     transition: box-shadow 160ms;
 }
 
@@ -841,7 +841,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-family: var(--aurora-display);
+    font-family: var(--borealis-display);
     font-weight: 600;
     letter-spacing: -0.01em;
     color: var(--gray-950);
@@ -852,7 +852,7 @@
     margin-top: 0.3rem;
     padding: 0.05rem 0.5rem;
     border-radius: 9999px;
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.6rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -862,12 +862,12 @@
 
 .cms-user-menu-appearance {
     padding: 0.5rem 0.75rem 0.625rem;
-    border-top: 1px solid var(--aurora-hairline);
+    border-top: 1px solid var(--borealis-hairline);
 }
 
 .cms-user-menu-label {
     margin-bottom: 0.4rem;
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.62rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -875,14 +875,14 @@
 }
 
 .cms-user-menu-segment > button.cms-active {
-    background: var(--aurora-card-solid);
+    background: var(--borealis-card-solid);
     color: var(--primary-600);
-    box-shadow: 0 1px 2px rgb(15 23 42 / 0.1), inset 0 0 0 1px var(--aurora-hairline);
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.1), inset 0 0 0 1px var(--borealis-hairline);
 }
 
 /* The app name beside the logo mark (resources/views/filament/brand.blade.php). */
 .cms-wordmark {
-    font-family: var(--aurora-display);
+    font-family: var(--borealis-display);
     font-size: 1.125rem;
     font-weight: 600;
     letter-spacing: -0.035em;
@@ -891,11 +891,11 @@
 
 /* ── Command palette (usamamuneerchaudhary/filament-command-palette) ───── */
 .fi-cp-root {
-    --fi-cp-bg: var(--aurora-card-solid);
+    --fi-cp-bg: var(--borealis-card-solid);
     --fi-cp-bg-muted: transparent;
-    --fi-cp-border: var(--aurora-hairline);
+    --fi-cp-border: var(--borealis-hairline);
     --fi-cp-overlay: rgb(10 8 30 / 0.4);
-    --fi-cp-selected-bg: var(--aurora-rail-active-bg);
+    --fi-cp-selected-bg: var(--borealis-rail-active-bg);
     --fi-cp-hover-bg: rgb(128 128 128 / 0.08);
 }
 
@@ -903,20 +903,20 @@
     border: 1px solid transparent;
     border-radius: 1.5rem;
     background:
-        linear-gradient(var(--aurora-card-solid), var(--aurora-card-solid)) padding-box,
-        var(--aurora-edge) border-box;
-    box-shadow: var(--aurora-shadow-lifted);
+        linear-gradient(var(--borealis-card-solid), var(--borealis-card-solid)) padding-box,
+        var(--borealis-edge) border-box;
+    box-shadow: var(--borealis-shadow-lifted);
     overflow: hidden;
 }
 
 .fi-cp-root .fi-cp-search {
-    border-bottom: 1px solid var(--aurora-hairline);
+    border-bottom: 1px solid var(--borealis-hairline);
 }
 
 .fi-cp-root .fi-cp-group-label {
     padding-top: 0.75rem;
     background: transparent;
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.62rem;
     font-weight: 500;
     letter-spacing: 0.16em;
@@ -931,54 +931,54 @@
     padding: 0.55rem 0.75rem;
     border-radius: 0.875rem;
     font-weight: 500;
-    color: var(--aurora-rail-text);
+    color: var(--borealis-rail-text);
     transition: background-color 150ms, box-shadow 150ms, color 150ms;
 }
 
 .fi-cp-root .fi-cp-item:hover {
-    background: var(--aurora-rail-hover);
-    color: var(--aurora-rail-strong);
+    background: var(--borealis-rail-hover);
+    color: var(--borealis-rail-strong);
 }
 
 .fi-cp-root .fi-cp-item.is-selected,
 .fi-cp-root .fi-cp-item.is-selected:hover {
-    background: var(--aurora-rail-active-bg);
-    box-shadow: var(--aurora-rail-active-shadow);
+    background: var(--borealis-rail-active-bg);
+    box-shadow: var(--borealis-rail-active-shadow);
 }
 
 .fi-cp-root .fi-cp-item-icon {
-    color: var(--aurora-rail-muted);
+    color: var(--borealis-rail-muted);
 }
 
 .fi-cp-root .fi-cp-item:hover .fi-cp-item-icon {
-    color: var(--aurora-rail-strong);
+    color: var(--borealis-rail-strong);
 }
 
 .fi-cp-root .fi-cp-footer {
-    border-top: 1px solid var(--aurora-hairline);
+    border-top: 1px solid var(--borealis-hairline);
     background: rgb(128 128 128 / 0.04);
 }
 
 .fi-cp-root .fi-cp-kbd {
     border-radius: 0.375rem;
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
 }
 
 /* Global search results: the same card as the user menu and other dropdowns. */
 .fi-global-search-results-ctn {
     margin-top: 0.625rem;
     border-radius: 1.125rem;
-    background: var(--aurora-card-solid);
-    box-shadow: var(--aurora-shadow-lifted), inset 0 0 0 1px var(--aurora-hairline);
+    background: var(--borealis-card-solid);
+    box-shadow: var(--borealis-shadow-lifted), inset 0 0 0 1px var(--borealis-hairline);
     --tw-ring-shadow: 0 0 #0000;
     scrollbar-width: thin;
 }
 
 .fi-global-search-result-group-header {
     padding-top: 0.75rem;
-    border-color: var(--aurora-hairline);
-    background: var(--aurora-card-solid);
-    font-family: var(--aurora-mono);
+    border-color: var(--borealis-hairline);
+    background: var(--borealis-card-solid);
+    font-family: var(--borealis-mono);
     font-size: 0.62rem;
     font-weight: 500;
     letter-spacing: 0.16em;
@@ -989,13 +989,13 @@
 .fi-global-search-result,
 .fi-global-search-result:hover,
 .fi-global-search-result:focus-within {
-    border-color: var(--aurora-hairline);
+    border-color: var(--borealis-hairline);
     background: transparent;
 }
 
 .fi-global-search-result-link:hover,
 .fi-global-search-result-link:focus-visible {
-    background: var(--aurora-rail-hover);
+    background: var(--borealis-rail-hover);
 }
 
 .cms-user-badge-avatar {
@@ -1004,23 +1004,23 @@
     flex: none;
     border-radius: 9999px;
     object-fit: cover;
-    box-shadow: 0 0 0 1px var(--aurora-hairline);
+    box-shadow: 0 0 0 1px var(--borealis-hairline);
 }
 
 /* People picker (Aurora\Support\PeoplePicker): rows like the sidebar items, a violet check. */
 .cms-people-row:hover {
-    background: var(--aurora-rail-hover);
+    background: var(--borealis-rail-hover);
 }
 
 .cms-people-row input:checked ~ .cms-people-check {
-    background: var(--aurora-rail-active-bg);
-    box-shadow: var(--aurora-rail-active-shadow);
+    background: var(--borealis-rail-active-bg);
+    box-shadow: var(--borealis-rail-active-shadow);
 }
 
 #copilot-messages .prose a:hover {
     color: #fff;
-    background: var(--aurora-rail-active-bg);
-    box-shadow: var(--aurora-rail-active-shadow);
+    background: var(--borealis-rail-active-bg);
+    box-shadow: var(--borealis-rail-active-shadow);
 }
 
 /* ── Tabs in a card (page SEO, settings) ─────────────────────────────── */
@@ -1030,16 +1030,16 @@
     border: 1px solid transparent;
     border-radius: 1.5rem;
     background:
-        linear-gradient(var(--aurora-card-solid), var(--aurora-card-solid)) padding-box,
-        var(--aurora-edge) border-box;
-    box-shadow: var(--aurora-shadow);
+        linear-gradient(var(--borealis-card-solid), var(--borealis-card-solid)) padding-box,
+        var(--borealis-edge) border-box;
+    box-shadow: var(--borealis-shadow);
     --tw-ring-shadow: 0 0 #0000;
 }
 
 .dark .fi-sc-tabs.fi-contained {
     background:
-        linear-gradient(var(--aurora-card), var(--aurora-card)) padding-box,
-        var(--aurora-edge) border-box;
+        linear-gradient(var(--borealis-card), var(--borealis-card)) padding-box,
+        var(--borealis-edge) border-box;
 }
 
 .fi-sc-tabs.fi-contained > .fi-tabs.fi-contained {
@@ -1049,8 +1049,8 @@
     border: 0;
     border-radius: 9999px;
     padding: 0.3rem;
-    background: color-mix(in oklch, var(--aurora-card-solid) 80%, transparent);
-    box-shadow: var(--aurora-shadow), inset 0 0 0 1px var(--aurora-hairline);
+    background: color-mix(in oklch, var(--borealis-card-solid) 80%, transparent);
+    box-shadow: var(--borealis-shadow), inset 0 0 0 1px var(--borealis-hairline);
     --tw-ring-shadow: 0 0 #0000;
 }
 
@@ -1064,18 +1064,18 @@
     padding: 0.25rem;
     border-radius: 0.875rem;
     background: color-mix(in oklch, var(--gray-500) 8%, transparent);
-    box-shadow: inset 0 0 0 1px var(--aurora-hairline);
+    box-shadow: inset 0 0 0 1px var(--borealis-hairline);
     --tw-ring-shadow: 0 0 #0000;
 }
 
 .fi-fo-toggle-buttons.fi-btn-group:not(.fpb-inspector *) > .fi-btn[aria-pressed='true'] {
-    background: color-mix(in oklch, var(--color-500, var(--gray-500)) 16%, var(--aurora-card-solid));
+    background: color-mix(in oklch, var(--color-500, var(--gray-500)) 16%, var(--borealis-card-solid));
     color: var(--color-700, var(--gray-900));
     box-shadow: 0 1px 2px rgb(15 23 42 / 0.08), inset 0 0 0 1px color-mix(in oklch, var(--color-500, var(--gray-500)) 45%, transparent);
 }
 
 .cms-page-picker-path {
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.6875rem;
     line-height: 1rem;
     color: var(--color-gray-400);
@@ -1083,27 +1083,27 @@
 
 /* One card per format, its name above what it makes. */
 .cms-format-handle {
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.75rem;
     font-weight: 400;
     color: var(--color-gray-500);
 }
 
 .cms-exif-all dt {
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
 }
 
 .cms-search-pages-rank {
     flex-shrink: 0;
     width: 1.5rem;
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.75rem;
     color: var(--color-gray-500);
     text-align: end;
 }
 
 .cms-search-pages-path {
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.6875rem;
     color: var(--color-gray-400);
 }
@@ -1111,7 +1111,7 @@
 .cms-search-pages-score {
     flex-shrink: 0;
     min-width: 2.5rem;
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.75rem;
     color: var(--color-gray-500);
     text-align: end;
@@ -1119,7 +1119,7 @@
 
 /* On the canvas: floating over it, under the editor's bar. */
 .cms-api-endpoints code {
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.8125rem;
     color: var(--color-primary-600);
 }
@@ -1130,10 +1130,10 @@
     padding: 0.875rem 1rem;
     border-radius: 0.875rem;
     background: color-mix(in oklch, var(--color-gray-950) 4%, transparent);
-    box-shadow: inset 0 0 0 1px var(--aurora-hairline);
+    box-shadow: inset 0 0 0 1px var(--borealis-hairline);
     line-height: 1.6;
 }
 
 .cms-system-info code {
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
 }

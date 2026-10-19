@@ -1,5 +1,5 @@
 /*
- * "Aurora" for the visual editor (carljanzell/filament-page-builder): the block palette
+ * "Borealis" for the visual editor (carljanzell/filament-page-builder): the block palette
  * is the same command rail as the panel's sidebar, the toolbar and inspector float as
  * glass over the aurora grid, the page sits on it like a lit sheet, and the editor's
  * own blue (selection, drop lines, handles) becomes the panel's violet and cyan.
@@ -9,16 +9,16 @@
  * canvas is the site's own styling and is left alone.
  */
 .fpb {
-    --aurora-accent: var(--primary-500);
-    --aurora-accent-soft: color-mix(in oklch, var(--primary-500) 14%, transparent);
-    --aurora-accent-glow: color-mix(in oklch, var(--primary-500) 45%, transparent);
+    --borealis-accent: var(--primary-500);
+    --borealis-accent-soft: color-mix(in oklch, var(--primary-500) 14%, transparent);
+    --borealis-accent-glow: color-mix(in oklch, var(--primary-500) 45%, transparent);
 
-    background-color: var(--aurora-bg);
+    background-color: var(--borealis-bg);
     background-image:
         radial-gradient(50rem 24rem at 30% -10%, color-mix(in oklch, var(--primary-400) 22%, transparent), transparent 70%),
-        radial-gradient(40rem 22rem at 100% 0%, color-mix(in oklch, var(--aurora-cyan) 16%, transparent), transparent 70%),
-        linear-gradient(var(--aurora-grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--aurora-grid) 1px, transparent 1px);
+        radial-gradient(40rem 22rem at 100% 0%, color-mix(in oklch, var(--borealis-cyan) 16%, transparent), transparent 70%),
+        linear-gradient(var(--borealis-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--borealis-grid) 1px, transparent 1px);
     background-size: auto, auto, 32px 32px, 32px 32px;
 }
 
@@ -27,14 +27,14 @@
     margin: 0.75rem 0.75rem 0;
     border: 0;
     border-radius: 1.25rem;
-    background: var(--aurora-glass);
+    background: var(--borealis-glass);
     -webkit-backdrop-filter: saturate(1.8) blur(20px);
     backdrop-filter: saturate(1.8) blur(20px);
-    box-shadow: var(--aurora-glass-shadow);
+    box-shadow: var(--borealis-glass-shadow);
 }
 
 .fpb .fpb-chrome-title {
-    font-family: var(--aurora-display);
+    font-family: var(--borealis-display);
     font-weight: 600;
     letter-spacing: -0.02em;
 }
@@ -48,27 +48,27 @@
     font-size: 0.8125rem;
     font-weight: 600;
     opacity: 1;
-    background: color-mix(in oklch, var(--aurora-card-solid) 75%, transparent);
-    box-shadow: 0 1px 2px rgb(15 23 42 / 0.06), inset 0 0 0 1px var(--aurora-hairline);
+    background: color-mix(in oklch, var(--borealis-card-solid) 75%, transparent);
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.06), inset 0 0 0 1px var(--borealis-hairline);
     transition: background-color 150ms, box-shadow 150ms;
 }
 
 .fpb .fpb-back:hover {
-    background: color-mix(in oklch, var(--aurora-card-solid) 92%, var(--primary-500));
+    background: color-mix(in oklch, var(--borealis-card-solid) 92%, var(--primary-500));
     box-shadow: 0 1px 2px rgb(15 23 42 / 0.06), inset 0 0 0 1px color-mix(in oklch, var(--primary-500) 35%, transparent);
 }
 
-/* The canvas width switcher: the same pill tabs as Filament's (.fi-tabs in aurora.css). */
+/* The canvas width switcher: the same pill tabs as Filament's (.fi-tabs in borealis.css). */
 .fpb .fpb-preview-toggle {
     gap: 0.25rem;
     border-radius: 9999px;
     padding: 0.3rem;
-    background: color-mix(in oklch, var(--aurora-card-solid) 80%, transparent);
-    box-shadow: var(--aurora-shadow), inset 0 0 0 1px var(--aurora-hairline);
+    background: color-mix(in oklch, var(--borealis-card-solid) 80%, transparent);
+    box-shadow: var(--borealis-shadow), inset 0 0 0 1px var(--borealis-hairline);
 }
 
 .fpb .fpb-preview-btn[data-active='true'] {
-    background: var(--aurora-ink);
+    background: var(--borealis-ink);
     color: #fff;
     box-shadow: 0 8px 20px -8px color-mix(in oklch, var(--primary-600) 70%, transparent), inset 0 0 0 1px rgb(255 255 255 / 0.08);
 }
@@ -78,100 +78,100 @@
     margin: 0.75rem 0 0.75rem 0.75rem;
     border: 0;
     border-radius: 1.25rem;
-    color: var(--aurora-rail-text);
-    background: var(--aurora-rail-bg);
+    color: var(--borealis-rail-text);
+    background: var(--borealis-rail-bg);
     backdrop-filter: saturate(1.8) blur(20px);
-    box-shadow: var(--aurora-rail-shadow);
+    box-shadow: var(--borealis-rail-shadow);
     scrollbar-width: thin;
-    scrollbar-color: var(--aurora-rail-line) transparent;
+    scrollbar-color: var(--borealis-rail-line) transparent;
 }
 
 .fpb .fpb-palette .fpb-panel-hint {
-    color: var(--aurora-rail-muted);
+    color: var(--borealis-rail-muted);
     opacity: 1;
 }
 
 .fpb .fpb-palette .fpb-side-tabs {
     border-radius: 9999px;
-    background: var(--aurora-rail-hover);
+    background: var(--borealis-rail-hover);
 }
 
 .fpb .fpb-palette .fpb-side-tab {
     border-radius: 9999px;
-    color: var(--aurora-rail-text);
+    color: var(--borealis-rail-text);
 }
 
 .fpb .fpb-palette .fpb-side-tab[data-active='true'] {
-    background: var(--aurora-rail-active-bg);
-    color: var(--aurora-rail-active-text);
-    box-shadow: var(--aurora-rail-active-shadow);
+    background: var(--borealis-rail-active-bg);
+    color: var(--borealis-rail-active-text);
+    box-shadow: var(--borealis-rail-active-shadow);
 }
 
 .fpb .fpb-palette .fpb-search-input {
     border-radius: 0.875rem;
-    border-color: var(--aurora-rail-line);
-    background: var(--aurora-rail-tile);
-    color: var(--aurora-rail-strong);
+    border-color: var(--borealis-rail-line);
+    background: var(--borealis-rail-tile);
+    color: var(--borealis-rail-strong);
     padding: 0.5rem 0.75rem;
 }
 
 .fpb .fpb-palette .fpb-search-input::placeholder {
-    color: var(--aurora-rail-muted);
+    color: var(--borealis-rail-muted);
 }
 
 .fpb .fpb-palette .fpb-search-input:focus {
     outline: none;
     border-color: var(--primary-400);
-    box-shadow: 0 0 0 3px var(--aurora-accent-glow);
+    box-shadow: 0 0 0 3px var(--borealis-accent-glow);
 }
 
 .fpb .fpb-palette .fpb-palette-group {
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.62rem;
     font-weight: 500;
     letter-spacing: 0.16em;
-    color: var(--aurora-rail-muted);
+    color: var(--borealis-rail-muted);
     opacity: 1;
 }
 
 .fpb .fpb-palette .fpb-palette-item {
-    border-color: var(--aurora-rail-line);
+    border-color: var(--borealis-rail-line);
     border-radius: 0.875rem;
-    background: var(--aurora-rail-tile);
-    color: var(--aurora-rail-strong);
+    background: var(--borealis-rail-tile);
+    color: var(--borealis-rail-strong);
 }
 
 .fpb .fpb-palette .fpb-palette-item:hover {
     border-color: color-mix(in oklch, var(--primary-400) 70%, transparent);
-    background: var(--aurora-rail-hover);
-    box-shadow: 0 8px 22px -10px var(--aurora-accent-glow);
+    background: var(--borealis-rail-hover);
+    box-shadow: 0 8px 22px -10px var(--borealis-accent-glow);
 }
 
 .dark .fpb .fpb-palette .fpb-palette-icon {
-    color: var(--aurora-cyan);
+    color: var(--borealis-cyan);
 }
 
 .fpb .fpb-palette .fpb-palette-desc {
-    color: var(--aurora-rail-muted);
+    color: var(--borealis-rail-muted);
     opacity: 1;
 }
 
 .fpb .fpb-palette .fpb-structure-btn:hover {
-    background: var(--aurora-rail-hover);
+    background: var(--borealis-rail-hover);
 }
 
 .fpb .fpb-palette .fpb-structure-btn[data-selected='true'] {
-    background: var(--aurora-rail-active-bg);
-    color: var(--aurora-rail-active-text);
+    background: var(--borealis-rail-active-bg);
+    color: var(--borealis-rail-active-text);
 }
 
 .fpb .fpb-palette .fpb-structure .fpb-structure {
-    border-left-color: var(--aurora-rail-line);
+    border-left-color: var(--borealis-rail-line);
 }
 
 .fpb .fpb-palette .fpb-shortcuts {
-    border-top-color: var(--aurora-rail-line);
-    color: var(--aurora-rail-muted);
+    border-top-color: var(--borealis-rail-line);
+    color: var(--borealis-rail-muted);
 }
 
 /* ── Inspector: a glass card ──────────────────────────────────────────── */
@@ -180,50 +180,50 @@
     border: 1px solid transparent;
     border-radius: 1.5rem;
     background:
-        linear-gradient(var(--aurora-card-solid), var(--aurora-card-solid)) padding-box,
-        var(--aurora-edge) border-box;
-    box-shadow: var(--aurora-shadow);
+        linear-gradient(var(--borealis-card-solid), var(--borealis-card-solid)) padding-box,
+        var(--borealis-edge) border-box;
+    box-shadow: var(--borealis-shadow);
 }
 
 .fpb .fpb-inspector .fpb-panel-title {
-    font-family: var(--aurora-display);
+    font-family: var(--borealis-display);
     letter-spacing: -0.02em;
 }
 
 .fpb .fpb-inspector-tabs .fpb-side-tab[data-active='true'] {
-    background: var(--aurora-ink);
+    background: var(--borealis-ink);
     color: #fff;
 }
 
 .fpb .fpb-inspector-icon {
     border-radius: 0.75rem;
     color: #fff;
-    background: linear-gradient(135deg, var(--primary-600), color-mix(in oklch, var(--primary-500) 60%, var(--aurora-cyan)));
-    box-shadow: 0 6px 16px -6px var(--aurora-accent-glow);
+    background: linear-gradient(135deg, var(--primary-600), color-mix(in oklch, var(--primary-500) 60%, var(--borealis-cyan)));
+    box-shadow: 0 6px 16px -6px var(--borealis-accent-glow);
 }
 
 .fpb .fpb-token-pick[data-active='true'] {
-    border-color: var(--aurora-accent);
-    background: var(--aurora-accent-soft);
+    border-color: var(--borealis-accent);
+    background: var(--borealis-accent-soft);
 }
 
 .fpb .fpb-canvas {
     border: 0;
     border-radius: 0;
     box-shadow:
-        0 0 0 1px var(--aurora-hairline),
+        0 0 0 1px var(--borealis-hairline),
         0 30px 80px -30px rgb(49 21 120 / 0.35),
-        0 0 0 6px color-mix(in oklch, var(--aurora-card-solid) 35%, transparent);
+        0 0 0 6px color-mix(in oklch, var(--borealis-card-solid) 35%, transparent);
 }
 
 /* Selection, hover and editing outlines in the accent, with a soft glow. */
 .fpb .fpb-block[data-selected='true']::after {
-    outline-color: var(--aurora-accent);
-    box-shadow: 0 0 0 4px var(--aurora-accent-soft), 0 0 30px -6px var(--aurora-accent-glow);
+    outline-color: var(--borealis-accent);
+    box-shadow: 0 0 0 4px var(--borealis-accent-soft), 0 0 30px -6px var(--borealis-accent-glow);
 }
 
 .fpb .fpb-block-body [data-fpb-field]:focus {
-    outline-color: var(--aurora-accent);
+    outline-color: var(--borealis-accent);
 }
 
 /* The block's toolbar pills: the rail's ink. */
@@ -231,91 +231,91 @@
 .fpb .fpb-block-bar > .fpb-block-label,
 .fpb .fpb-block-bar > .fpb-block-quick,
 .fpb .fpb-block-bar > .fpb-block-tools {
-    background: color-mix(in oklch, var(--aurora-ink) 92%, transparent);
+    background: color-mix(in oklch, var(--borealis-ink) 92%, transparent);
     box-shadow: 0 4px 12px -4px rgb(13 11 31 / 0.5), inset 0 0 0 1px rgb(255 255 255 / 0.08);
 }
 
 .fpb .fpb-block-label {
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.62rem;
     letter-spacing: 0.1em;
 }
 
 .fpb .fpb-block-quick button[data-active='true'] {
-    background: var(--aurora-accent);
+    background: var(--borealis-accent);
 }
 
 body.fpb-edit-mode .fpb .fpb-slot[data-drop-active='true'] {
-    border-color: var(--aurora-accent);
-    background: var(--aurora-accent-soft);
+    border-color: var(--borealis-accent);
+    background: var(--borealis-accent-soft);
 }
 
 .fpb .fpb-drop-indicator[data-kind='line']::before {
-    background: linear-gradient(90deg, var(--primary-500), var(--aurora-cyan));
-    box-shadow: 0 0 0 3px var(--aurora-accent-soft), 0 4px 18px var(--aurora-accent-glow);
+    background: linear-gradient(90deg, var(--primary-500), var(--borealis-cyan));
+    box-shadow: 0 0 0 3px var(--borealis-accent-soft), 0 4px 18px var(--borealis-accent-glow);
 }
 
 .fpb .fpb-drop-indicator[data-kind='zone'] {
-    border-color: var(--aurora-accent);
-    background: var(--aurora-accent-soft);
+    border-color: var(--borealis-accent);
+    background: var(--borealis-accent-soft);
 }
 
 .fpb .fpb-drop-cap {
-    border-color: var(--aurora-accent);
+    border-color: var(--borealis-accent);
 }
 
 .fpb .fpb-drop-label {
     background: linear-gradient(100deg, var(--primary-600), var(--primary-500));
-    box-shadow: 0 2px 10px var(--aurora-accent-glow);
+    box-shadow: 0 2px 10px var(--borealis-accent-glow);
 }
 
 .fpb .fpb-resize::after,
 .fpb .fpb-col-handle::after {
-    background: var(--aurora-accent);
+    background: var(--borealis-accent);
 }
 
 .fpb .fpb-col-handle:hover::before,
 .fpb .fpb-col-handle[data-active='true']::before {
-    background: var(--aurora-accent);
+    background: var(--borealis-accent);
 }
 
 .fpb .fpb-flash:not([data-tone]) {
-    outline-color: var(--aurora-accent);
+    outline-color: var(--borealis-accent);
     background: color-mix(in oklch, var(--primary-500) 7%, transparent);
-    box-shadow: 0 0 0 4px var(--aurora-accent-soft), 0 8px 26px var(--aurora-accent-glow);
+    box-shadow: 0 0 0 4px var(--borealis-accent-soft), 0 8px 26px var(--borealis-accent-glow);
 }
 
 /* Right-click menu: glass. */
 body .fpb-menu {
     border-radius: 1rem;
-    border-color: var(--aurora-hairline);
-    background: color-mix(in oklch, var(--aurora-card-solid) 90%, transparent);
+    border-color: var(--borealis-hairline);
+    background: color-mix(in oklch, var(--borealis-card-solid) 90%, transparent);
     backdrop-filter: blur(16px);
-    box-shadow: var(--aurora-shadow-lifted);
+    box-shadow: var(--borealis-shadow-lifted);
 }
 
 body .fpb-menu .fpb-menu-item:hover:not(:disabled),
 body .fpb-menu .fpb-menu-item:focus-visible {
-    background: var(--aurora-accent-soft);
+    background: var(--borealis-accent-soft);
 }
 
 /* ── Preview: the same canvas, capsule and buttons as the editor ─────── */
 .fpb .fpb-preview {
-    background-color: var(--aurora-bg);
+    background-color: var(--borealis-bg);
     background-image:
         radial-gradient(56rem 26rem at 18% -6%, color-mix(in oklch, var(--primary-400) 26%, transparent), transparent 70%),
-        radial-gradient(44rem 22rem at 96% 2%, color-mix(in oklch, var(--aurora-cyan) 20%, transparent), transparent 70%),
-        linear-gradient(var(--aurora-grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--aurora-grid) 1px, transparent 1px);
+        radial-gradient(44rem 22rem at 96% 2%, color-mix(in oklch, var(--borealis-cyan) 20%, transparent), transparent 70%),
+        linear-gradient(var(--borealis-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--borealis-grid) 1px, transparent 1px);
     background-size: auto, auto, 32px 32px, 32px 32px;
 }
 
 .dark .fpb .fpb-preview {
     background-image:
         radial-gradient(56rem 26rem at 18% -6%, color-mix(in oklch, var(--primary-600) 34%, transparent), transparent 70%),
-        radial-gradient(44rem 22rem at 96% 2%, color-mix(in oklch, var(--aurora-cyan) 16%, transparent), transparent 70%),
-        linear-gradient(var(--aurora-grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--aurora-grid) 1px, transparent 1px);
+        radial-gradient(44rem 22rem at 96% 2%, color-mix(in oklch, var(--borealis-cyan) 16%, transparent), transparent 70%),
+        linear-gradient(var(--borealis-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--borealis-grid) 1px, transparent 1px);
 }
 
 .fpb .fpb-preview-bar {
@@ -323,14 +323,14 @@ body .fpb-menu .fpb-menu-item:focus-visible {
     padding: 0.5rem 0.5rem 0.5rem 1rem;
     border: 0;
     border-radius: 1.25rem;
-    background: var(--aurora-glass);
+    background: var(--borealis-glass);
     -webkit-backdrop-filter: saturate(1.8) blur(20px);
     backdrop-filter: saturate(1.8) blur(20px);
-    box-shadow: var(--aurora-glass-shadow);
+    box-shadow: var(--borealis-glass-shadow);
 }
 
 .fpb .fpb-preview-heading strong {
-    font-family: var(--aurora-display);
+    font-family: var(--borealis-display);
     font-weight: 600;
     letter-spacing: -0.02em;
 }
@@ -340,13 +340,13 @@ body .fpb-menu .fpb-menu-item:focus-visible {
     font-size: 0.8125rem;
     font-weight: 600;
     opacity: 1;
-    background: color-mix(in oklch, var(--aurora-card-solid) 75%, transparent);
-    box-shadow: 0 1px 2px rgb(15 23 42 / 0.06), inset 0 0 0 1px var(--aurora-hairline);
+    background: color-mix(in oklch, var(--borealis-card-solid) 75%, transparent);
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.06), inset 0 0 0 1px var(--borealis-hairline);
     transition: background-color 150ms, box-shadow 150ms;
 }
 
 .fpb .fpb-preview-actions .fpb-preview-btn:hover {
-    background: color-mix(in oklch, var(--aurora-card-solid) 92%, var(--primary-500));
+    background: color-mix(in oklch, var(--borealis-card-solid) 92%, var(--primary-500));
     box-shadow: 0 1px 2px rgb(15 23 42 / 0.06), inset 0 0 0 1px color-mix(in oklch, var(--primary-500) 35%, transparent);
 }
 
@@ -355,7 +355,7 @@ body .fpb-menu .fpb-menu-item:focus-visible {
     border-radius: 9999px;
     font-size: 0.8125rem;
     font-weight: 600;
-    background-image: linear-gradient(110deg, var(--primary-700) 0%, var(--primary-500) 38%, #c026d3 62%, var(--primary-500) 82%, var(--aurora-cyan) 120%);
+    background-image: linear-gradient(110deg, var(--primary-700) 0%, var(--primary-500) 38%, #c026d3 62%, var(--primary-500) 82%, var(--borealis-cyan) 120%);
     background-size: 220% 100%;
     background-position: 0% 50%;
     box-shadow:
@@ -370,17 +370,17 @@ body .fpb-menu .fpb-menu-item:focus-visible {
     padding: 0.05rem 0.35rem;
     border-radius: 0.375rem;
     background: rgb(255 255 255 / 0.18);
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
 }
 
 .fpb .fpb-preview-frame {
     border-radius: 1.25rem;
-    box-shadow: var(--aurora-shadow);
+    box-shadow: var(--borealis-shadow);
 }
 
 .fpb .fpb-preview-loading {
-    background: var(--aurora-ink);
-    box-shadow: 0 6px 16px -6px var(--aurora-accent-glow);
+    background: var(--borealis-ink);
+    box-shadow: 0 6px 16px -6px var(--borealis-accent-glow);
 }
 
 .fpb .cms-editor-language-button {
@@ -392,14 +392,14 @@ body .fpb-menu .fpb-menu-item:focus-visible {
     font-size: 0.8125rem;
     font-weight: 600;
     white-space: nowrap;
-    background: color-mix(in oklch, var(--aurora-card-solid) 75%, transparent);
-    box-shadow: inset 0 0 0 1px var(--aurora-hairline);
+    background: color-mix(in oklch, var(--borealis-card-solid) 75%, transparent);
+    box-shadow: inset 0 0 0 1px var(--borealis-hairline);
 }
 
 .cms-translating .fpb .cms-editor-language-button {
     color: #fff;
-    background: var(--aurora-rail-active-bg);
-    box-shadow: var(--aurora-rail-active-shadow);
+    background: var(--borealis-rail-active-bg);
+    box-shadow: var(--borealis-rail-active-shadow);
 }
 
 .fpb .cms-editor-language-menu {
@@ -410,18 +410,18 @@ body .fpb-menu .fpb-menu-item:focus-visible {
     min-width: 15rem;
     padding: 0.35rem;
     border-radius: 0.875rem;
-    background: var(--aurora-card-solid);
-    box-shadow: var(--aurora-shadow), inset 0 0 0 1px var(--aurora-hairline);
+    background: var(--borealis-card-solid);
+    box-shadow: var(--borealis-shadow), inset 0 0 0 1px var(--borealis-hairline);
 }
 
 .fpb .cms-editor-language-item:hover {
-    background: var(--aurora-rail-hover);
+    background: var(--borealis-rail-hover);
 }
 
 .fpb .cms-editor-language-code {
     grid-row: span 2;
     align-self: center;
-    font-family: var(--aurora-mono);
+    font-family: var(--borealis-mono);
     font-size: 0.7rem;
     opacity: 0.7;
 }
@@ -434,6 +434,6 @@ body .fpb-menu .fpb-menu-item:focus-visible {
     object-fit: cover;
     object-position: top;
     border-radius: 0.5rem;
-    border: 1px solid var(--aurora-rail-line);
+    border: 1px solid var(--borealis-rail-line);
     pointer-events: none;
 }

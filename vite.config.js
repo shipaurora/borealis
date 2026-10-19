@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { execSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 
-// Aurora's prebuilt admin theme (resources/dist/theme.css): run `npm run build:aurora` from
+// Borealis' prebuilt admin theme (resources/dist/theme.css): run `npm run build:aurora` from
 // the app root after changing its CSS. Sites that install Aurora use it as it is.
 const resources = fileURLToPath(new URL('./resources', import.meta.url));
 
