@@ -1054,6 +1054,26 @@
     background: color-mix(in oklch, var(--primary-500) 28%, transparent);
 }
 
+/* ── The dashboard's welcome card and the logo mark (the CMS's views, styled by the theme) ── */
+
+.cms-welcome {
+    background:
+        radial-gradient(60% 120% at 0% 0%, rgb(124 58 237 / 0.55), transparent 70%),
+        radial-gradient(40% 100% at 100% 0%, rgb(34 211 238 / 0.35), transparent 70%),
+        #09090b;
+}
+
+.cms-welcome-grid {
+    background-image:
+        linear-gradient(to right, rgb(255 255 255 / 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgb(255 255 255 / 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+.cms-brand-mark {
+    box-shadow: 0 6px 16px -6px rgb(124 58 237 / 0.6);
+}
+
 /* ── User menu (resources/views/vendor/filament-panels/components/user-menu) ── */
 
 .cms-user-menu-card {
