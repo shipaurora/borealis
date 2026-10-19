@@ -606,6 +606,28 @@
     padding-block: 1.125rem;
 }
 
+/* On a phone, a section's header actions (Clear page cache, Add webhook…) go on a line of their
+   own under the heading, lined up with its text, instead of squeezing it into a narrow column. */
+@media (max-width: 40rem) {
+    .fi-section > .fi-section-header:has(> .fi-section-header-after-ctn) {
+        flex-wrap: wrap;
+    }
+
+    .fi-section > .fi-section-header > .fi-section-header-after-ctn {
+        flex-basis: 100%;
+        align-self: flex-start;
+        margin-block: 0;
+    }
+
+    .fi-section > .fi-section-header > .fi-section-header-after-ctn > .fi-sc.fi-align-end {
+        justify-content: flex-start;
+    }
+
+    .fi-section > .fi-section-header:has(> .fi-icon) > .fi-section-header-after-ctn {
+        margin-inline-start: 3.15rem;
+    }
+}
+
 .fi-section-header-heading {
     font-family: var(--aurora-display);
     font-weight: 600;
@@ -862,6 +884,13 @@
 .dark .fi-tabs-item.fi-active {
     background: color-mix(in oklch, var(--primary-500) 28%, transparent);
     box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--primary-400) 40%, transparent);
+}
+
+/* On a phone, a form's tabs (Settings' sections) are words only, so they fit side by side. */
+@media (max-width: 40rem) {
+    .fi-sc-tabs .fi-tabs-item > .fi-icon {
+        display: none;
+    }
 }
 
 .fi-dropdown-panel {
@@ -2588,6 +2617,12 @@ html:has(.fpb) {
 }
 
 /* On the canvas: floating over it, under the editor's bar. */
+/* In the visual editor, the lock keeper isn't one of the editor grid's areas (top bar, block
+   list, canvas, inspector): its notice floats over the canvas instead. */
+.fpb > .cms-edit-lock-keeper {
+    display: contents;
+}
+
 .fpb .cms-edit-lock {
     position: fixed;
     top: 4.75rem;
@@ -2604,7 +2639,7 @@ html:has(.fpb) {
     background: var(--color-gray-900);
 }
 
-/* Settings › Integrations › Content API: its addresses, one per row. */
+/* Settings › Integrations › REST API / GraphQL API: its addresses, one per row, or an example query. */
 .cms-api-endpoints dl {
     display: grid;
     gap: 0.5rem;
@@ -2630,6 +2665,34 @@ html:has(.fpb) {
 
 .cms-api-endpoints dd {
     color: var(--color-gray-500);
+}
+
+/* On a phone, each address above what it answers. */
+@media (max-width: 40rem) {
+    .cms-api-endpoints dl > div {
+        grid-template-columns: 1fr;
+        gap: 0.125rem;
+    }
+}
+
+.cms-api-example-label {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.cms-api-example {
+    overflow-x: auto;
+    margin-top: 0.5rem;
+    padding: 0.875rem 1rem;
+    border-radius: 0.875rem;
+    background: color-mix(in oklch, var(--color-gray-950) 4%, transparent);
+    box-shadow: inset 0 0 0 1px var(--aurora-hairline);
+    line-height: 1.6;
+}
+
+.dark .cms-api-example {
+    background: rgb(0 0 0 / 0.25);
 }
 
 /* A file's focal point: the image, with a dot where cropped sizes keep its subject. */
