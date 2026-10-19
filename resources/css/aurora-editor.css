@@ -8,7 +8,6 @@
  * (one class more specific) so it wins whichever loads last. Block content on the
  * canvas is the site's own styling and is left alone.
  */
-
 .fpb {
     --aurora-accent: var(--primary-500);
     --aurora-accent-soft: color-mix(in oklch, var(--primary-500) 14%, transparent);
@@ -24,7 +23,6 @@
 }
 
 /* ── Toolbar: a floating glass capsule ────────────────────────────────── */
-
 .fpb .fpb-chrome {
     margin: 0.75rem 0.75rem 0;
     border: 0;
@@ -55,25 +53,9 @@
     transition: background-color 150ms, box-shadow 150ms;
 }
 
-/* The same chip as the Preview button, with Phosphor's bold arrow in front. */
-.fpb .fpb-back::before {
-    content: '';
-    width: 1rem;
-    height: 1rem;
-    background: currentColor;
-    opacity: 0.6;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath d='M228,128a12,12,0,0,1-12,12H69l51.52,51.51a12,12,0,0,1-17,17l-72-72a12,12,0,0,1,0-17l72-72a12,12,0,0,1,17,17L69,116H216A12,12,0,0,1,228,128Z'/%3E%3C/svg%3E") center / contain no-repeat;
-    transition: transform 150ms, opacity 150ms;
-}
-
 .fpb .fpb-back:hover {
     background: color-mix(in oklch, var(--aurora-card-solid) 92%, var(--primary-500));
     box-shadow: 0 1px 2px rgb(15 23 42 / 0.06), inset 0 0 0 1px color-mix(in oklch, var(--primary-500) 35%, transparent);
-}
-
-.fpb .fpb-back:hover::before {
-    opacity: 1;
-    transform: translateX(-2px);
 }
 
 /* The canvas width switcher: the same pill tabs as Filament's (.fi-tabs in aurora.css). */
@@ -85,43 +67,13 @@
     box-shadow: var(--aurora-shadow), inset 0 0 0 1px var(--aurora-hairline);
 }
 
-.fpb .fpb-preview-btn {
-    border-radius: 9999px;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--gray-500);
-    opacity: 1;
-    transition: background-color 160ms, color 160ms, box-shadow 160ms;
-}
-
-.fpb .fpb-preview-btn:not([data-active='true']):hover {
-    background: var(--gray-50);
-    color: var(--gray-700);
-}
-
-.dark .fpb .fpb-preview-btn {
-    color: var(--gray-400);
-}
-
-.dark .fpb .fpb-preview-btn:not([data-active='true']):hover {
-    background: rgb(255 255 255 / 0.05);
-    color: var(--gray-200);
-}
-
 .fpb .fpb-preview-btn[data-active='true'] {
     background: var(--aurora-ink);
     color: #fff;
     box-shadow: 0 8px 20px -8px color-mix(in oklch, var(--primary-600) 70%, transparent), inset 0 0 0 1px rgb(255 255 255 / 0.08);
 }
 
-.dark .fpb .fpb-preview-btn[data-active='true'] {
-    background: color-mix(in oklch, var(--primary-500) 28%, transparent);
-    box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--primary-400) 40%, transparent);
-}
-
 /* ── Block palette: the command rail (light glass, dark in dark mode) ── */
-
 .fpb .fpb-palette {
     margin: 0.75rem 0 0.75rem 0.75rem;
     border: 0;
@@ -195,10 +147,6 @@
     box-shadow: 0 8px 22px -10px var(--aurora-accent-glow);
 }
 
-.fpb .fpb-palette .fpb-palette-icon {
-    color: var(--primary-500);
-}
-
 .dark .fpb .fpb-palette .fpb-palette-icon {
     color: var(--aurora-cyan);
 }
@@ -227,7 +175,6 @@
 }
 
 /* ── Inspector: a glass card ──────────────────────────────────────────── */
-
 .fpb .fpb-inspector {
     margin: 0.75rem 0.75rem 0.75rem 0;
     border: 1px solid transparent;
@@ -243,14 +190,6 @@
     letter-spacing: -0.02em;
 }
 
-.fpb .fpb-inspector-tabs {
-    border-radius: 9999px;
-}
-
-.fpb .fpb-inspector-tabs .fpb-side-tab {
-    border-radius: 9999px;
-}
-
 .fpb .fpb-inspector-tabs .fpb-side-tab[data-active='true'] {
     background: var(--aurora-ink);
     color: #fff;
@@ -263,21 +202,9 @@
     box-shadow: 0 6px 16px -6px var(--aurora-accent-glow);
 }
 
-.fpb .fpb-inspector-parent,
-.fpb .fpb-crumb-field {
-    color: var(--primary-600);
-}
-
 .fpb .fpb-token-pick[data-active='true'] {
     border-color: var(--aurora-accent);
     background: var(--aurora-accent-soft);
-}
-
-/* ── Canvas: the page as a lit sheet on the grid ──────────────────────── */
-
-.fpb .fpb-canvas-frame {
-    background: transparent;
-    padding: 1.5rem;
 }
 
 .fpb .fpb-canvas {
@@ -293,10 +220,6 @@
 .fpb .fpb-block[data-selected='true']::after {
     outline-color: var(--aurora-accent);
     box-shadow: 0 0 0 4px var(--aurora-accent-soft), 0 0 30px -6px var(--aurora-accent-glow);
-}
-
-.fpb .fpb-block-body [data-fpb-field]:hover {
-    outline-color: color-mix(in oklch, var(--primary-500) 50%, transparent);
 }
 
 .fpb .fpb-block-body [data-fpb-field]:focus {
@@ -320,12 +243,6 @@
 
 .fpb .fpb-block-quick button[data-active='true'] {
     background: var(--aurora-accent);
-}
-
-/* Drop targets and drag feedback. */
-body.fpb-edit-mode .fpb .fpb-slot {
-    border-color: color-mix(in oklch, var(--primary-500) 30%, transparent);
-    background: color-mix(in oklch, var(--primary-500) 3%, transparent);
 }
 
 body.fpb-edit-mode .fpb .fpb-slot[data-drop-active='true'] {
@@ -357,30 +274,15 @@ body.fpb-edit-mode .fpb .fpb-slot[data-drop-active='true'] {
     background: var(--aurora-accent);
 }
 
-.fpb .fpb-col-handle::before {
-    background: color-mix(in oklch, var(--primary-500) 35%, transparent);
-}
-
 .fpb .fpb-col-handle:hover::before,
 .fpb .fpb-col-handle[data-active='true']::before {
     background: var(--aurora-accent);
-}
-
-.fpb .fpb-block-body > .fpb-spacer {
-    background: repeating-linear-gradient(-45deg, color-mix(in oklch, var(--primary-500) 8%, transparent) 0 6px, transparent 6px 12px);
-    outline-color: color-mix(in oklch, var(--primary-500) 30%, transparent);
 }
 
 .fpb .fpb-flash:not([data-tone]) {
     outline-color: var(--aurora-accent);
     background: color-mix(in oklch, var(--primary-500) 7%, transparent);
     box-shadow: 0 0 0 4px var(--aurora-accent-soft), 0 8px 26px var(--aurora-accent-glow);
-}
-
-.fpb button.fpb-empty-btn {
-    border-color: color-mix(in oklch, var(--primary-500) 35%, transparent);
-    background: color-mix(in oklch, var(--primary-500) 6%, transparent);
-    border-radius: 9999px;
 }
 
 /* Right-click menu: glass. */
@@ -398,7 +300,6 @@ body .fpb-menu .fpb-menu-item:focus-visible {
 }
 
 /* ── Preview: the same canvas, capsule and buttons as the editor ─────── */
-
 .fpb .fpb-preview {
     background-color: var(--aurora-bg);
     background-image:
@@ -434,10 +335,6 @@ body .fpb-menu .fpb-menu-item:focus-visible {
     letter-spacing: -0.02em;
 }
 
-.fpb .fpb-preview-actions {
-    gap: 0.5rem;
-}
-
 .fpb .fpb-preview-actions .fpb-preview-btn {
     padding: 0.45rem 0.9rem;
     font-size: 0.8125rem;
@@ -469,11 +366,6 @@ body .fpb-menu .fpb-menu-item:focus-visible {
     transition: background-position 300ms, transform 150ms, box-shadow 150ms;
 }
 
-.fpb button.fpb-preview-close:hover {
-    background-position: 70% 50%;
-    transform: translateY(-1px);
-}
-
 .fpb .fpb-preview-close kbd {
     padding: 0.05rem 0.35rem;
     border-radius: 0.375rem;
@@ -489,47 +381,6 @@ body .fpb-menu .fpb-menu-item:focus-visible {
 .fpb .fpb-preview-loading {
     background: var(--aurora-ink);
     box-shadow: 0 6px 16px -6px var(--aurora-accent-glow);
-}
-
-/* Save status: a green dot when saved, an amber, gently pulsing one with unsaved changes. */
-.fpb .fpb-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-}
-
-.fpb .fpb-status::before {
-    content: '';
-    width: 0.45rem;
-    height: 0.45rem;
-    flex-shrink: 0;
-    border-radius: 9999px;
-    background: var(--success-500);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--success-500) 22%, transparent), 0 0 8px color-mix(in oklch, var(--success-500) 70%, transparent);
-}
-
-.fpb .fpb-status-dirty::before {
-    background: var(--warning-500);
-    box-shadow: 0 0 0 3px color-mix(in oklch, var(--warning-500) 22%, transparent), 0 0 8px color-mix(in oklch, var(--warning-500) 70%, transparent);
-    animation: cms-status-pulse 1.6s ease-in-out infinite;
-}
-
-@keyframes cms-status-pulse {
-    50% {
-        opacity: 0.45;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .fpb .fpb-status-dirty::before {
-        animation: none;
-    }
-}
-
-/* ── Language: the switcher, and translating (text only) ─────────────── */
-
-.fpb .cms-editor-language {
-    position: relative;
 }
 
 .fpb .cms-editor-language-button {
@@ -563,22 +414,8 @@ body .fpb-menu .fpb-menu-item:focus-visible {
     box-shadow: var(--aurora-shadow), inset 0 0 0 1px var(--aurora-hairline);
 }
 
-.fpb .cms-editor-language-item {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 0.6rem;
-    padding: 0.45rem 0.6rem;
-    border-radius: 0.6rem;
-    font-size: 0.8125rem;
-    font-weight: 600;
-}
-
 .fpb .cms-editor-language-item:hover {
     background: var(--aurora-rail-hover);
-}
-
-.fpb .cms-editor-language-item.is-active {
-    background: color-mix(in oklch, var(--primary-500) 14%, transparent);
 }
 
 .fpb .cms-editor-language-code {
@@ -587,148 +424,6 @@ body .fpb-menu .fpb-menu-item:focus-visible {
     font-family: var(--aurora-mono);
     font-size: 0.7rem;
     opacity: 0.7;
-}
-
-.fpb .cms-editor-language-note {
-    font-size: 0.7rem;
-    font-weight: 500;
-    opacity: 0.6;
-}
-
-.fpb .cms-editor-missing {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--warning-500);
-    white-space: nowrap;
-}
-
-.fpb .cms-editor-missing.is-done {
-    color: var(--success-500);
-}
-
-/* Translating: the layout is shared, so what changes it is out of reach. The left column
-   shows the page's outline instead of blocks to add. */
-.cms-translating .fpb #fpb-panel-blocks,
-.cms-translating .fpb .fpb-side-tabs,
-.cms-translating .fpb #fpb-tab-style,
-.cms-translating .fpb #fpb-tab-layout,
-.cms-translating .fpb .fpb-block-handle,
-.cms-translating .fpb .fpb-block-bar button:not(:first-child),
-.cms-translating .fpb .fpb-slot-empty,
-.cms-translating .fpb [data-fpb-resize] {
-    display: none !important;
-}
-
-.cms-translating .fpb #fpb-panel-structure {
-    display: block !important;
-}
-
-/* The editor fills the window from the top; while impersonating, it starts below the banner. */
-body.fpb-edit-mode .fi-main {
-    top: var(--impersonate-banner-height, 0px) !important;
-    height: calc(100dvh - var(--impersonate-banner-height, 0px)) !important;
-}
-
-.fpb .fpb-status {
-    white-space: nowrap;
-}
-
-/* ── Toolbar on smaller screens: two tidy rows, labels give way to icons ── */
-
-.fpb .cms-editor-language-code-short,
-.fpb .cms-editor-missing-short {
-    display: none;
-}
-
-@media (max-width: 1280px) {
-    .fpb .fpb-chrome-start {
-        flex: 1 1 100%;
-        min-width: 0;
-    }
-
-    .fpb .fpb-chrome-title {
-        flex: 0 1 auto;
-        min-width: 0;
-        max-width: none;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .fpb .fpb-toolbar-actions {
-        flex: 1 1 100%;
-        justify-content: flex-end;
-        gap: 0.4rem;
-    }
-
-    /* The count as a small badge; the full sentence is its tooltip. */
-    .fpb .cms-editor-missing-long {
-        display: none;
-    }
-
-    .fpb .cms-editor-missing-short {
-        display: inline-grid;
-        place-items: center;
-        min-width: 1.4rem;
-        height: 1.4rem;
-        padding: 0 0.35rem;
-        border-radius: 9999px;
-        font-size: 0.7rem;
-        background: color-mix(in oklch, currentColor 16%, transparent);
-    }
-
-    /* Secondary buttons (Translate with AI, Preview) keep just their icon. */
-    .fpb .fpb-toolbar-actions > .fi-btn:not(.fi-color-primary) {
-        font-size: 0;
-        gap: 0;
-        padding-inline: 0.55rem;
-    }
-}
-
-@media (max-width: 640px) {
-    .fpb .fpb-back,
-    .fpb .fpb-status {
-        font-size: 0;
-        gap: 0;
-    }
-
-    .fpb .fpb-back {
-        padding: 0.45rem;
-    }
-
-    .fpb .cms-editor-language-name {
-        display: none;
-    }
-
-    .fpb .cms-editor-language-code-short {
-        display: inline;
-    }
-
-    /* The language menu would run off the left edge from its right-aligned spot. */
-    .fpb .cms-editor-language-menu {
-        right: auto;
-        left: 0;
-    }
-}
-
-.fpb .cms-save-short {
-    display: none;
-}
-
-@media (max-width: 640px) {
-    .fpb .cms-save-long {
-        display: none;
-    }
-
-    .fpb .cms-save-short {
-        display: inline;
-    }
-}
-
-/* A block's picture in its card in the editor's block list, between its name and its
-   description (Aurora's copy of the editor view). */
-.fpb .fpb-palette .fpb-palette-copy {
-    min-width: 0;
 }
 
 .fpb .fpb-palette .cms-palette-preview {
@@ -741,56 +436,4 @@ body.fpb-edit-mode .fi-main {
     border-radius: 0.5rem;
     border: 1px solid var(--aurora-rail-line);
     pointer-events: none;
-}
-
-/* Room above each category: every heading is first in its own group, so the page builder's
-   "no margin on the first one" took it from all of them. */
-.fpb .fpb-palette .fpb-palette-group-wrap + .fpb-palette-group-wrap .fpb-palette-group {
-    margin-top: 1.5rem;
-}
-
-.fpb .fpb-palette .fpb-palette-group {
-    margin-bottom: 0.5rem;
-}
-
-/* The same picture larger, beside the block list while pointing at the block
-   (block-previews.js). */
-.cms-block-preview {
-    position: fixed;
-    z-index: 60;
-    width: 24rem;
-    padding: 0.375rem;
-    border: 1px solid color-mix(in oklch, var(--color-gray-500) 25%, transparent);
-    border-radius: 0.875rem;
-    background: var(--color-white, #fff);
-    box-shadow: 0 18px 40px -12px rgb(0 0 0 / 0.35);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-4px);
-    transition: opacity 120ms, transform 120ms;
-}
-
-.dark .cms-block-preview {
-    background: var(--color-gray-900);
-}
-
-.cms-block-preview-shown {
-    opacity: 1;
-    transform: none;
-}
-
-.cms-block-preview img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    object-position: top;
-    border-radius: 0.5rem;
-}
-
-/* The block's icon on its name's line in the block list (Aurora's copy of the editor view). */
-.fpb .fpb-palette .cms-palette-name {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
 }
