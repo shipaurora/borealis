@@ -20,6 +20,8 @@ class ThemeServiceProvider extends ServiceProvider
             stylesheet: __DIR__.'/../resources/dist/theme.css',
             preview: __DIR__.'/../resources/preview.webp',
             package: 'aurora/aurora',
+            // Made for both: people switch in the user menu.
+            modes: ['light', 'dark'],
         );
     }
 }
