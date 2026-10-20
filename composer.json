@@ -41,6 +41,9 @@
             "providers": [
                 "Aurora\\Borealis\\ThemeServiceProvider"
             ]
+        },
+        "branch-alias": {
+            "dev-main": "1.x-dev"
         }
     }
 }
