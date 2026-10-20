@@ -1,10 +1,34 @@
 {
     "name": "shipaurora/borealis-theme",
     "description": "Borealis, Aurora CMS's default admin theme: its styles, design tokens and prebuilt Filament theme.",
+    "keywords": [
+        "aurora",
+        "aurora-cms",
+        "cms",
+        "laravel",
+        "filament",
+        "filament-theme",
+        "admin-theme",
+        "theme",
+        "dark-mode",
+        "tailwindcss"
+    ],
+    "homepage": "https://shipaurora.com",
     "type": "library",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas Alrek",
+            "email": "thomas@alrek.no"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/shipaurora/borealis-theme/issues",
+        "source": "https://github.com/shipaurora/borealis-theme"
+    },
     "require": {
         "php": "^8.3",
+        "shipaurora/cms": "^1.0",
         "filament/filament": "^5.10"
     },
     "autoload": {
