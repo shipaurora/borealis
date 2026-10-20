@@ -1,5 +1,5 @@
 {
-    "name": "aurora/borealis",
+    "name": "shipaurora/borealis-theme",
     "description": "Borealis, Aurora CMS's default admin theme: its styles, design tokens and prebuilt Filament theme.",
     "type": "library",
     "license": "MIT",

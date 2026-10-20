@@ -20,7 +20,7 @@ class ThemeServiceProvider extends ServiceProvider
             stylesheet: __DIR__.'/../resources/dist/theme.css',
             // A picture of each mode: the theme picker shows the one people are in.
             preview: ['light' => __DIR__.'/../resources/preview-light.webp', 'dark' => __DIR__.'/../resources/preview-dark.webp'],
-            package: 'aurora/borealis',
+            package: 'shipaurora/borealis-theme',
             // Made for both: people switch in the user menu.
             modes: ['light', 'dark'],
         );
