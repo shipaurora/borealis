@@ -43,7 +43,7 @@ composer require shipaurora/borealis
 php artisan filament:assets
 ```
 
-`filament:assets` copies the stylesheet to `public/css/shipaurora/borealis`. Run it again
+`filament:assets` copies the stylesheet to `public/css/shipaurora/borealis-theme`. Run it again
 after updating the package.
 
 ## Usage
