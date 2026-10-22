@@ -1,5 +1,5 @@
 {
-    "name": "shipaurora/borealis-theme",
+    "name": "shipaurora/borealis",
     "description": "Borealis, Aurora CMS's default admin theme: its styles, design tokens and prebuilt Filament theme.",
     "keywords": [
         "aurora",
@@ -31,6 +31,9 @@
         "php": "^8.3",
         "shipaurora/cms": "^1.0",
         "filament/filament": "^5.10"
+    },
+    "replace": {
+        "shipaurora/borealis-theme": "self.version"
     },
     "autoload": {
         "psr-4": {
