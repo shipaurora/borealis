@@ -2,7 +2,7 @@
 
 [![Latest version](https://img.shields.io/packagist/v/shipaurora/borealis)](https://packagist.org/packages/shipaurora/borealis)
 [![Downloads](https://img.shields.io/packagist/dt/shipaurora/borealis)](https://packagist.org/packages/shipaurora/borealis)
-[![PHP 8.3+](https://img.shields.io/badge/PHP-8.3%2B-777BB4?logo=php&logoColor=white)](https://www.php.net)
+[![PHP 8.4+](https://img.shields.io/badge/PHP-8.4%2B-777BB4?logo=php&logoColor=white)](https://www.php.net)
 [![Laravel 13](https://img.shields.io/badge/Laravel-13-FF2D20?logo=laravel&logoColor=white)](https://laravel.com)
 [![Filament 5](https://img.shields.io/badge/Filament-5-FDAE4B)](https://filamentphp.com)
 [![License: MIT](https://img.shields.io/packagist/l/shipaurora/borealis)](LICENSE)
@@ -28,7 +28,7 @@ sidebar, in light and dark.
 
 ## Requirements
 
-- PHP 8.3 or newer
+- PHP 8.4 or newer
 - [Aurora](https://github.com/shipaurora/cms) (`shipaurora/cms`), with Filament 5.10 or newer
 
 ## Installation
