@@ -30,7 +30,7 @@
     "require": {
         "php": "^8.4",
         "shipaurora/cms": "^1.0",
-        "filament/filament": "^5.10"
+        "filament/filament": "^5.10.3"
     },
     "replace": {
         "shipaurora/borealis-theme": "self.version"
