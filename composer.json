@@ -24,8 +24,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/shipaurora/borealis-theme/issues",
-        "source": "https://github.com/shipaurora/borealis-theme"
+        "issues": "https://github.com/shipaurora/borealis/issues",
+        "source": "https://github.com/shipaurora/borealis"
     },
     "require": {
         "php": "^8.3",
