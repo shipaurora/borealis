@@ -3,6 +3,8 @@
  * neon folder chip, image cards that lift and glow, and the upload panel as glass.
  * Hooks are the cms-* classes in resources/views/filament/assets and the picker views.
  * The drag-and-drop highlights use !important utilities and keep winning over these.
+ * Since Aurora 1.2.5 a folder is a card of the files' grid (.cms-folder-record) and lifts
+ * like them; .cms-folder-tile is for older versions.
  */
 
 /* ── Folders ──────────────────────────────────────────────────────────── */
@@ -50,7 +52,7 @@
     box-shadow: 0 6px 14px -6px color-mix(in oklch, var(--primary-600) 80%, transparent);
 }
 
-.fi-ta-record.cms-asset-record:hover {
+.fi-ta-record:is(.cms-asset-record, .cms-folder-record):hover {
     transform: translateY(-3px);
     background:
         linear-gradient(var(--borealis-card-solid), var(--borealis-card-solid)) padding-box,
@@ -58,7 +60,7 @@
     box-shadow: 0 22px 46px -22px color-mix(in oklch, var(--primary-600) 60%, transparent);
 }
 
-.dark .fi-ta-record.cms-asset-record:hover {
+.dark .fi-ta-record:is(.cms-asset-record, .cms-folder-record):hover {
     background:
         linear-gradient(var(--borealis-card), var(--borealis-card)) padding-box,
         var(--borealis-edge) border-box;
